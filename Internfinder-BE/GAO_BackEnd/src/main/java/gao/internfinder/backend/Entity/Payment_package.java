@@ -1,24 +1,39 @@
 package gao.internfinder.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 
-@Entity
-@Table(name = "payment_package")
+@Entity(name = "payment_package")
+
 public  class Payment_package {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpayment_package")
+
     private Integer idpayment_package;
-    @Column(name = "name")
+
+    @OneToMany(mappedBy = "payment_package")
+    @JsonBackReference
+    private Set<Pay> payList;
+
     private String name;
-    @Column(name = "number_post")
+
     private Integer number_post;
-    @Column(name = "pay_money")
+
     private Float  pay_money;
 
     public Payment_package() {
 
+    }
+
+    public Payment_package(Integer idpayment_package, Set<Pay> payList, String name, Integer number_post, Float pay_money) {
+        this.idpayment_package = idpayment_package;
+        this.payList = payList;
+        this.name = name;
+        this.number_post = number_post;
+        this.pay_money = pay_money;
     }
 
     public Integer getIdpayment_package() {
@@ -27,6 +42,14 @@ public  class Payment_package {
 
     public void setIdpayment_package(Integer idpayment_package) {
         this.idpayment_package = idpayment_package;
+    }
+
+    public Set<Pay> getPayList() {
+        return payList;
+    }
+
+    public void setPayList(Set<Pay> payList) {
+        this.payList = payList;
     }
 
     public String getName() {
@@ -50,13 +73,6 @@ public  class Payment_package {
     }
 
     public void setPay_money(Float pay_money) {
-        this.pay_money = pay_money;
-    }
-
-    public Payment_package(Integer idpayment_package, String name, Integer number_post, Float pay_money) {
-        this.idpayment_package = idpayment_package;
-        this.name = name;
-        this.number_post = number_post;
         this.pay_money = pay_money;
     }
 }

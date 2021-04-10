@@ -2,16 +2,12 @@ package gao.internfinder.backend.Entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "footer")
+@Entity(name = "footer")
 public class Footer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idfooter")
     private Integer idfooter;
-    @Column(name = "content")
     private  String content;
-    @Column(name = "status")
     private  Boolean status;
 
     public Footer() {

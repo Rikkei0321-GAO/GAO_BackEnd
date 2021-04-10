@@ -1,38 +1,66 @@
 package gao.internfinder.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
-@Entity
-@Table(name = "created_cv")
+@Entity(name = "cv")
 public class Created_cv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idcreated_CV")
-    private Integer idcreated_CV;
-    @Column(name = "file_name")
+
+    private Integer id_CV;
+    @ManyToOne
+    @JoinColumn(name = "id_account")
+    private Account account;
+
+
+    @ManyToOne
+    @JoinColumn(name = "idtemplate_cv")
+    private Template_cv template_cv;
+
     private  String file_name;
-    @Column(name = "path")
+
     private String path;
-    @Column(name = "create_date")
+
     private Date create_date;
-    @Column(name = "account_idAccount")
-    private  Integer account_idAccount;
-    @Column(name = "account_role_id_role")
-    private  String account_role_id_role;
-    @Column(name = "Template_CV_idtemplate_CV")
-    private  String Template_CV_idtemplate_CV;
 
     public Created_cv() {
-
     }
 
-    public Integer getIdcreated_CV() {
-        return idcreated_CV;
+    public Created_cv(Integer id_CV, Account account, Template_cv template_cv, String file_name, String path, Date create_date) {
+        this.id_CV = id_CV;
+        this.account = account;
+        this.template_cv = template_cv;
+        this.file_name = file_name;
+        this.path = path;
+        this.create_date = create_date;
     }
 
-    public void setIdcreated_CV(Integer idcreated_CV) {
-        this.idcreated_CV = idcreated_CV;
+    public Integer getId_CV() {
+        return id_CV;
+    }
+
+    public void setId_CV(Integer id_CV) {
+        this.id_CV = id_CV;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Template_cv getTemplate_cv() {
+        return template_cv;
+    }
+
+    public void setTemplate_cv(Template_cv template_cv) {
+        this.template_cv = template_cv;
     }
 
     public String getFile_name() {
@@ -57,39 +85,5 @@ public class Created_cv {
 
     public void setCreate_date(Date create_date) {
         this.create_date = create_date;
-    }
-
-    public Integer getAccount_idAccount() {
-        return account_idAccount;
-    }
-
-    public void setAccount_idAccount(Integer account_idAccount) {
-        this.account_idAccount = account_idAccount;
-    }
-
-    public String getAccount_role_id_role() {
-        return account_role_id_role;
-    }
-
-    public void setAccount_role_id_role(String account_role_id_role) {
-        this.account_role_id_role = account_role_id_role;
-    }
-
-    public String getTemplate_CV_idtemplate_CV() {
-        return Template_CV_idtemplate_CV;
-    }
-
-    public void setTemplate_CV_idtemplate_CV(String template_CV_idtemplate_CV) {
-        Template_CV_idtemplate_CV = template_CV_idtemplate_CV;
-    }
-
-    public Created_cv(Integer idcreated_CV, String file_name, String path, Date create_date, Integer account_idAccount, String account_role_id_role, String template_CV_idtemplate_CV) {
-        this.idcreated_CV = idcreated_CV;
-        this.file_name = file_name;
-        this.path = path;
-        this.create_date = create_date;
-        this.account_idAccount = account_idAccount;
-        this.account_role_id_role = account_role_id_role;
-        Template_CV_idtemplate_CV = template_CV_idtemplate_CV;
     }
 }

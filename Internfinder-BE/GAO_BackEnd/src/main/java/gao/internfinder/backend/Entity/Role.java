@@ -1,31 +1,33 @@
 package gao.internfinder.backend.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-@Entity
-@Table(name = "role")
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity(name = "role")
 public class Role {
-    public Role() {
-    }
-
-    public Role(String idRole, String name) {
-        this.idRole = idRole;
-        this.name = name;
-    }
 
     @Id
-    @Column(name = "id_role")
-    private String idRole;
-    @Column(name = "name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idRole;
     private String name;
-    public String getIdRole() {
+    @OneToMany(mappedBy = "role")
+    @JsonBackReference
+    private Set<AccountRole> accountRoleList;
+
+    public Role(){}
+    public Role(Integer idRole, String name, Set<AccountRole> accountRoleList) {
+        this.idRole = idRole;
+        this.name = name;
+        this.accountRoleList = accountRoleList;
+    }
+
+    public Integer getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(String idRole) {
+    public void setIdRole(Integer idRole) {
         this.idRole = idRole;
     }
 
@@ -35,5 +37,13 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<AccountRole> getAccountRoleList() {
+        return accountRoleList;
+    }
+
+    public void setAccountRoleList(Set<AccountRole> accountRoleList) {
+        this.accountRoleList = accountRoleList;
     }
 }

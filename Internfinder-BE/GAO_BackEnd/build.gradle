@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.4.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "org.hibernate.gradle.tools" version "1.2.5"
 }
 
 group = 'gao.internfinder'
@@ -26,6 +27,8 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtime group: 'org.hibernate', name: 'hibernate-entitymanager', version: '3.6.7.Final'
+
 }
 
 test {

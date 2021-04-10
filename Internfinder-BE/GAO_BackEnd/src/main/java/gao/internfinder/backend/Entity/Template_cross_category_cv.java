@@ -3,38 +3,49 @@ package gao.internfinder.backend.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "template_cross_category_cv")
+@Entity(name = "template_cross_category_cv")
 public class Template_cross_category_cv implements Serializable {
     @Id
-    @Column(name = "Template_CV_idtemplate_CV")
-    private  Integer Template_CV_idtemplate_CV;
-    @Id
-    @Column(name = "category_template_idcategory_template")
-    private Integer category_template_idcategory_template;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @ManyToOne
+    @JoinColumn(name = "idtemplate_cv")
+    private Template_cv template_cv;
+    @ManyToOne
+    @JoinColumn(name = "id_category_template")
+    private Category_template category_template;
 
     public Template_cross_category_cv() {
 
     }
 
-    public Integer getTemplate_CV_idtemplate_CV() {
-        return Template_CV_idtemplate_CV;
+    public Template_cross_category_cv(Integer id, Template_cv template_cv, Category_template category_template) {
+        this.id = id;
+        this.template_cv = template_cv;
+        this.category_template = category_template;
     }
 
-    public void setTemplate_CV_idtemplate_CV(Integer template_CV_idtemplate_CV) {
-        Template_CV_idtemplate_CV = template_CV_idtemplate_CV;
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getCategory_template_idcategory_template() {
-        return category_template_idcategory_template;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setCategory_template_idcategory_template(Integer category_template_idcategory_template) {
-        this.category_template_idcategory_template = category_template_idcategory_template;
+    public Template_cv getTemplate_cv() {
+        return template_cv;
     }
 
-    public Template_cross_category_cv(Integer template_CV_idtemplate_CV, Integer category_template_idcategory_template) {
-        Template_CV_idtemplate_CV = template_CV_idtemplate_CV;
-        this.category_template_idcategory_template = category_template_idcategory_template;
+    public void setTemplate_cv(Template_cv template_cv) {
+        this.template_cv = template_cv;
+    }
+
+    public Category_template getCategory_template() {
+        return category_template;
+    }
+
+    public void setCategory_template(Category_template category_template) {
+        this.category_template = category_template;
     }
 }

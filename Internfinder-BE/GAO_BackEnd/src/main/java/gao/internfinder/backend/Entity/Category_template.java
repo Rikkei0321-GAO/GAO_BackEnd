@@ -1,21 +1,43 @@
 package gao.internfinder.backend.Entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-@Entity
-@Table(name = "category_template")
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity(name = "category_template")
+
 public class Category_template {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idcategory_template")
+
+    @OneToMany(mappedBy = "category_template")
+    @JsonBackReference
+    private Set<Template_cross_category_cv> template_cross_category_cvList;
+
     private  Integer id_category_template;
-    @Column(name = "name")
+
     private  String name;
-    @Column(name = "status")
+
     private  Boolean status;
 
     public Category_template() {
 
+    }
+
+    public Category_template(Set<Template_cross_category_cv> template_cross_category_cvList, Integer id_category_template, String name, Boolean status) {
+        this.template_cross_category_cvList = template_cross_category_cvList;
+        this.id_category_template = id_category_template;
+        this.name = name;
+        this.status = status;
+    }
+
+    public Set<Template_cross_category_cv> getTemplate_cross_category_cvList() {
+        return template_cross_category_cvList;
+    }
+
+    public void setTemplate_cross_category_cvList(Set<Template_cross_category_cv> template_cross_category_cvList) {
+        this.template_cross_category_cvList = template_cross_category_cvList;
     }
 
     public Integer getId_category_template() {
@@ -39,12 +61,6 @@ public class Category_template {
     }
 
     public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public Category_template(Integer id_category_template, String name, Boolean status) {
-        this.id_category_template = id_category_template;
-        this.name = name;
         this.status = status;
     }
 }
