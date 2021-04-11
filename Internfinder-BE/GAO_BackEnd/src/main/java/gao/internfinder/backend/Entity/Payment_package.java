@@ -1,4 +1,4 @@
-package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -8,11 +8,11 @@ import java.util.Set;
 
 @Entity(name = "payment_package")
 
-public  class Payment_package {
+public class Payment_package {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer idpayment_package;
+    private Integer idPaymentPackage;
 
     @OneToMany(mappedBy = "payment_package")
     @JsonBackReference
@@ -22,26 +22,26 @@ public  class Payment_package {
 
     private Integer number_post;
 
-    private Float  pay_money;
+    private Float pay_money;
 
     public Payment_package() {
 
     }
 
-    public Payment_package(Integer idpayment_package, Set<Pay> payList, String name, Integer number_post, Float pay_money) {
-        this.idpayment_package = idpayment_package;
+    public Payment_package(Integer idPaymentPackage, Set<Pay> payList, String name, Integer number_post, Float pay_money) {
+        this.idPaymentPackage = idPaymentPackage;
         this.payList = payList;
         this.name = name;
         this.number_post = number_post;
         this.pay_money = pay_money;
     }
 
-    public Integer getIdpayment_package() {
-        return idpayment_package;
+    public Integer getidPaymentPackage() {
+        return idPaymentPackage;
     }
 
-    public void setIdpayment_package(Integer idpayment_package) {
-        this.idpayment_package = idpayment_package;
+    public void setidPaymentPackage(Integer idpayment_package) {
+        this.idPaymentPackage = idpayment_package;
     }
 
     public Set<Pay> getPayList() {

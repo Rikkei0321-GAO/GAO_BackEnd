@@ -10,16 +10,17 @@ import java.util.Set;
 public class Category_template {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_category_template;
 
     @OneToMany(mappedBy = "category_template")
     @JsonBackReference
     private Set<Template_cross_category_cv> template_cross_category_cvList;
 
-    private  Integer id_category_template;
 
-    private  String name;
 
-    private  Boolean status;
+    private String name;
+
+    private Boolean status;
 
     public Category_template() {
 

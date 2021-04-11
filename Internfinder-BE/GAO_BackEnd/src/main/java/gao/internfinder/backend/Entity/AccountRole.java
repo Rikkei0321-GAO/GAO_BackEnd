@@ -15,7 +15,9 @@ public class AccountRole {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    public AccountRole(){}
+    public AccountRole() {
+    }
+
     public AccountRole(Integer accountRoleId, Account account, Role role) {
         this.accountRoleId = accountRoleId;
         this.account = account;

@@ -1,4 +1,4 @@
-package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -11,7 +11,7 @@ public class Template_cv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private  Integer idtemplate_CV;
+    private Integer idtemplate_CV;
 
     @OneToMany(mappedBy = "template_cv")
     @JsonBackReference

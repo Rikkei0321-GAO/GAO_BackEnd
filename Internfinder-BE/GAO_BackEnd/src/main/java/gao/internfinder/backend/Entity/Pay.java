@@ -1,4 +1,4 @@
-package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,15 +9,15 @@ public class Pay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private  Integer idpay;
+    private Integer idpay;
 
     @ManyToOne
     @JoinColumn(name = "id_account")
     private Account account;
 
     @ManyToOne
-    @JoinColumn(name = "idpayment_package")
-    private Pay pay;
+    @JoinColumn(name = "id_payment_package")
+    private Payment_package payment_package;
 
     private Integer number_posted;
 
@@ -30,10 +30,10 @@ public class Pay {
 
     }
 
-    public Pay(Integer idpay, Account account, Pay pay, Integer number_posted, Date pay_date, Boolean status) {
+    public Pay(Integer idpay, Account account, Payment_package payment_package, Integer number_posted, Date pay_date, Boolean status) {
         this.idpay = idpay;
         this.account = account;
-        this.pay = pay;
+        this.payment_package = payment_package;
         this.number_posted = number_posted;
         this.pay_date = pay_date;
         this.status = status;
@@ -55,12 +55,12 @@ public class Pay {
         this.account = account;
     }
 
-    public Pay getPay() {
-        return pay;
+    public Payment_package getPay() {
+        return payment_package;
     }
 
-    public void setPay(Pay pay) {
-        this.pay = pay;
+    public void setPay(Payment_package payment_package) {
+        this.payment_package = payment_package;
     }
 
     public Integer getNumber_posted() {

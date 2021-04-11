@@ -1,12 +1,10 @@
-package gao.internfinder.backend.Entity;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.io.Serializable;
 
 @Entity(name = "news")
-public class News {
+public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -20,25 +18,25 @@ public class News {
 
     private Integer idNews;
 
-    private  String decriptions;
+    private String decriptions;
 
-    private  String title;
+    private String title;
 
-    private  String image;
+    private String image;
 
-    private  String position;
+    private String position;
 
-    private  String salary;
+    private String salary;
 
-    private  String work_loaction;
+    private String work_loaction;
 
     private String degree;
 
-    private  String major;
+    private String major;
 
-    private  String working_time;
+    private String working_time;
 
-    private  String benefit;
+    private String benefit;
 
     private String sex;
 
@@ -54,7 +52,9 @@ public class News {
 
     private String phone;
 
-    public News(){}
+    public News() {
+    }
+
     public News(Account account, Category category, Integer idNews, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone) {
         this.account = account;
         this.category = category;

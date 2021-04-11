@@ -1,10 +1,7 @@
-package gao.internfinder.backend.Entity;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity(name = "cv")
 public class Created_cv {
@@ -16,12 +13,11 @@ public class Created_cv {
     @JoinColumn(name = "id_account")
     private Account account;
 
-
     @ManyToOne
     @JoinColumn(name = "idtemplate_cv")
     private Template_cv template_cv;
 
-    private  String file_name;
+    private String file_name;
 
     private String path;
 

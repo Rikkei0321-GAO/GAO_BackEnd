@@ -16,7 +16,9 @@ public class Role {
     @JsonBackReference
     private Set<AccountRole> accountRoleList;
 
-    public Role(){}
+    public Role() {
+    }
+
     public Role(Integer idRole, String name, Set<AccountRole> accountRoleList) {
         this.idRole = idRole;
         this.name = name;

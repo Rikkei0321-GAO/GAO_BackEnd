@@ -1,14 +1,17 @@
-package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity(name = "footer")
 public class Footer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idfooter;
-    private  String content;
-    private  Boolean status;
+    private String content;
+    private Boolean status;
 
     public Footer() {
 
