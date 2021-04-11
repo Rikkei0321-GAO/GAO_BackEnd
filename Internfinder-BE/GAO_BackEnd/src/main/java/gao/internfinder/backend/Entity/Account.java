@@ -40,8 +40,8 @@ public class Account {
     private Boolean status;
     @Column(name = "role_id_role")
     private String roleID;
-    public Account() {
-    }
+    @Column(name = "icon")
+    private String icon;
 
     public Integer getIdAccount() {
         return idAccount;
@@ -171,7 +171,15 @@ public class Account {
         this.roleID = roleID;
     }
 
-    public Account(Integer idAccount, String userName, String passWord, Date createDate, String fullName, Date brithday, Boolean sex, String phone, String address, String email, String compyName, String taxCode, String link, String nameContact, Boolean status, String roleID) {
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public Account(Integer idAccount, String userName, String passWord, Date createDate, String fullName, Date brithday, Boolean sex, String phone, String address, String email, String compyName, String taxCode, String link, String nameContact, Boolean status, String roleID, String icon) {
         this.idAccount = idAccount;
         this.userName = userName;
         this.passWord = passWord;
@@ -188,5 +196,11 @@ public class Account {
         this.nameContact = nameContact;
         this.status = status;
         this.roleID = roleID;
+        this.icon = icon;
     }
+
+    public Account() {
+    }
+
+
 }

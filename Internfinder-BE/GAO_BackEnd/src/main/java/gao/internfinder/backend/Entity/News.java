@@ -7,37 +7,74 @@ import javax.persistence.*;
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idNews")
+    @Column(name = "id_News")
     private Integer idNews;
     @Column(name = "decriptions")
     private  String decriptions;
     @Column(name = "title")
     private  String title;
-    @Column(name = "image")
-    private  String image;
+    @Column(name = "job_requirements")
+    private  String jobRequire;
     @Column(name = "position")
     private  String position;
     @Column(name = "salary")
     private  String salary;
     @Column(name = "work_location")
-    private  String work_loaction;
+    private  String workLoaction;
     @Column(name = "degree")
     private String degree;
     @Column(name = "major")
     private  String major;
     @Column(name = "working_time")
-    private  String working_time;
+    private  String workingTime;
     @Column(name = "benefit")
     private  String benefit;
-    @Column(name = "account_idAccount")
-    private  Integer account_idAccount;
-    @Column(name = "account_role_id_role")
-    private  String account_role_id_role;
-    @Column(name = "category_idCategory")
-    private  Integer category_idCategory;
-
+    @Column(name = "account_id_account")
+    private  Integer idAccount;
+    @Column(name = "category_id_Category")
+    private  Integer idCategory;
+    @Column(name = "name_nd")
+    private  String nameNd;
+    @Column(name = "type_of_work")
+    private  String typeOfwork;
+    @Column(name = "sex")
+    private  String sex;
+    @Column(name = "address_nd")
+    private  String adressNd;
+    @Column(name = "email_nd")
+    private  String emailNd;
+    @Column(name = "profile_language")
+    private  String profileLanguae;
+    @Column(name = "profile_requirement")
+    private  String profileRequi;
+    @Column(name = "sdt_nd")
+    private  String sdtNd;
     public News() {
 
+    }
+
+    public News(Integer idNews, String decriptions, String title, String jobRequire,  String position, String salary, String workLoaction, String degree, String major, String workingTime, String benefit, Integer idAccount,  Integer idCategory, String nameNd, String typeOfwork, String sex, String adressNd, String emailNd, String profileLanguae, String profileRequi, String sdtNd) {
+        this.idNews = idNews;
+        this.decriptions = decriptions;
+        this.title = title;
+        this.jobRequire = jobRequire;
+        this.position = position;
+        this.salary = salary;
+        this.workLoaction = workLoaction;
+        this.degree = degree;
+        this.major = major;
+        this.workingTime = workingTime;
+        this.benefit = benefit;
+        this.idAccount = idAccount;
+        this.idCategory = idCategory;
+        this.nameNd = nameNd;
+        this.typeOfwork = typeOfwork;
+        this.sex = sex;
+        this.adressNd = adressNd;
+        this.emailNd = emailNd;
+        this.profileLanguae = profileLanguae;
+        this.profileRequi = profileRequi;
+        this.sdtNd = sdtNd;
     }
 
     public Integer getIdNews() {
@@ -64,13 +101,14 @@ public class News {
         this.title = title;
     }
 
-    public String getImage() {
-        return image;
+    public String getJobRequire() {
+        return jobRequire;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setJobRequire(String jobRequire) {
+        this.jobRequire = jobRequire;
     }
+
 
     public String getPosition() {
         return position;
@@ -88,12 +126,12 @@ public class News {
         this.salary = salary;
     }
 
-    public String getWork_loaction() {
-        return work_loaction;
+    public String getWorkLoaction() {
+        return workLoaction;
     }
 
-    public void setWork_loaction(String work_loaction) {
-        this.work_loaction = work_loaction;
+    public void setWorkLoaction(String workLoaction) {
+        this.workLoaction = workLoaction;
     }
 
     public String getDegree() {
@@ -112,12 +150,12 @@ public class News {
         this.major = major;
     }
 
-    public String getWorking_time() {
-        return working_time;
+    public String getWorkingTime() {
+        return workingTime;
     }
 
-    public void setWorking_time(String working_time) {
-        this.working_time = working_time;
+    public void setWorkingTime(String workingTime) {
+        this.workingTime = workingTime;
     }
 
     public String getBenefit() {
@@ -128,44 +166,44 @@ public class News {
         this.benefit = benefit;
     }
 
-    public Integer getAccount_idAccount() {
-        return account_idAccount;
+    public Integer getIdAccount() {
+        return idAccount;
     }
 
-    public void setAccount_idAccount(Integer account_idAccount) {
-        this.account_idAccount = account_idAccount;
+    public void setIdAccount(Integer idAccount) {
+        this.idAccount = idAccount;
     }
 
-    public String getAccount_role_id_role() {
-        return account_role_id_role;
+
+    public Integer getIdCategory() {
+        return idCategory;
     }
 
-    public void setAccount_role_id_role(String account_role_id_role) {
-        this.account_role_id_role = account_role_id_role;
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public Integer getCategory_idCategory() {
-        return category_idCategory;
+    public String getNameNd() {
+        return nameNd;
     }
 
-    public void setCategory_idCategory(Integer category_idCategory) {
-        this.category_idCategory = category_idCategory;
+    public void setNameNd(String nameNd) {
+        this.nameNd = nameNd;
     }
 
-    public News(Integer idNews, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, Integer account_idAccount, String account_role_id_role, Integer category_idCategory) {
-        this.idNews = idNews;
-        this.decriptions = decriptions;
-        this.title = title;
-        this.image = image;
-        this.position = position;
-        this.salary = salary;
-        this.work_loaction = work_loaction;
-        this.degree = degree;
-        this.major = major;
-        this.working_time = working_time;
-        this.benefit = benefit;
-        this.account_idAccount = account_idAccount;
-        this.account_role_id_role = account_role_id_role;
-        this.category_idCategory = category_idCategory;
+    public String getTypeOfwork() {
+        return typeOfwork;
+    }
+
+    public void setTypeOfwork(String typeOfwork) {
+        this.typeOfwork = typeOfwork;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }
