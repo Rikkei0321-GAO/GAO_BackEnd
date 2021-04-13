@@ -15,7 +15,7 @@ public class Payment_package {
     private Integer idPaymentPackage;
 
     @OneToMany(mappedBy = "payment_package")
-    @JsonBackReference
+    @JsonBackReference(value = "payment_package" )
     private Set<Pay> payList;
 
     private String name;

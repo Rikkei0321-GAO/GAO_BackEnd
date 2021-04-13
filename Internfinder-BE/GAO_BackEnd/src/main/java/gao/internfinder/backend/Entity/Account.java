@@ -10,89 +10,63 @@ import java.util.Set;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id_account")
     private Integer idAccount;
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<AccountRole> accountRoleList;
-
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<News> newsList;
-
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<Comment> commentList;
-
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<Share_experience> share_experiencesList;
-
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<Pay> payList;
-
-    @OneToMany(mappedBy = "account")
-    @JsonBackReference
-    private Set<Created_cv> created_cvList;
-
+  //  @Column(name = "user_name")
     private String userName;
-
+    //@Column(name = "pass_Word")
     private String passWord;
-
+   // @Column(name = "create_Date")
     private Date createDate;
-
+   // @Column(name = "full_Name")
     private String fullName;
-
+    //@Column(name = "brithday")
     private Date brithday;
-
+   // @Column(name = "sex")
     private Boolean sex;
-
+    @Column(name = "phone")
     private String phone;
-
+    @Column(name = "address")
     private String address;
-
+    @Column(name = "email")
     private String email;
-
+    @Column(name = "compy_name")
     private String compyName;
-
+    @Column(name = "tax_Code")
     private String taxCode;
-
+    @Column(name = "link")
     private String link;
-
+    @Column(name = "name_contact")
     private String nameContact;
-
+    @Column(name = "status")
     private Boolean status;
-
+   @Column(name = "image")
     private String image;
 
     private String verificationCode;
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference(value = "accountRole")
+    private Set<AccountRole> accountRoleList;
 
-    public Account(Integer idAccount ,Set<AccountRole> accountRoleList ,Set<News> newsList, Set<Comment> commentList, Set<Share_experience> share_experiencesList,/* Set<Pay> payList, Set<Created_cv> created_cvList,*/ String userName, String passWord, Date createDate, String fullName, Date brithday, Boolean sex, String phone, String address, String email, String compyName, String taxCode, String link, String nameContact, Boolean status, String image, String verificationCode) {
-        this.idAccount = idAccount;
-        this.accountRoleList = accountRoleList;
-        this.newsList = newsList;
-        this.commentList = commentList;
-        this.share_experiencesList = share_experiencesList;
-        this.payList = payList;
-        this.created_cvList = created_cvList;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.createDate = createDate;
-        this.fullName = fullName;
-        this.brithday = brithday;
-        this.sex = sex;
-        this.phone = phone;
-        this.address = address;
-        this.email = email;
-        this.compyName = compyName;
-        this.taxCode = taxCode;
-        this.link = link;
-        this.nameContact = nameContact;
-        this.status = status;
-        this.image = image;
-        this.verificationCode = verificationCode;
-    }
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference(value = "news")
+    private Set<News> newsList;
 
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference(value = "comment" )
+    private Set<Comment> commentList;
+
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference(value = "Share_experience" )
+    private Set<Share_experience> share_experiencesList;
+
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference(value = "pay")
+    private Set<Pay> payList;
+
+    @OneToMany(mappedBy = "account")
+    @JsonBackReference( value = "Created_cv" )
+    private Set<Created_cv> created_cvList;
     public Account() {
 
     }
@@ -113,15 +87,15 @@ public class Account {
         this.accountRoleList = accountRoleList;
     }
 
-        public Set<News> getNewsList() {
+    public Set<News> getNewsList() {
         return newsList;
     }
 
     public void setNewsList(Set<News> newsList) {
         this.newsList = newsList;
     }
-    public Set<Comment> getCommentList() {
 
+    public Set<Comment> getCommentList() {
         return commentList;
     }
 
@@ -278,6 +252,32 @@ public class Account {
     }
 
     public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public Account(Integer idAccount, Set<AccountRole> accountRoleList, Set<News> newsList, Set<Comment> commentList, Set<Share_experience> share_experiencesList, Set<Pay> payList, Set<Created_cv> created_cvList, String userName, String passWord, Date createDate, String fullName, Date brithday, Boolean sex, String phone, String address, String email, String compyName, String taxCode, String link, String nameContact, Boolean status, String image, String verificationCode) {
+        this.idAccount = idAccount;
+        this.accountRoleList = accountRoleList;
+        this.newsList = newsList;
+        this.commentList = commentList;
+        this.share_experiencesList = share_experiencesList;
+        this.payList = payList;
+        this.created_cvList = created_cvList;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.createDate = createDate;
+        this.fullName = fullName;
+        this.brithday = brithday;
+        this.sex = sex;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.compyName = compyName;
+        this.taxCode = taxCode;
+        this.link = link;
+        this.nameContact = nameContact;
+        this.status = status;
+        this.image = image;
         this.verificationCode = verificationCode;
     }
 }

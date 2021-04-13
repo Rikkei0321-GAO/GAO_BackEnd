@@ -13,7 +13,7 @@ public class Category_template {
     private Integer id_category_template;
 
     @OneToMany(mappedBy = "category_template")
-    @JsonBackReference
+    @JsonBackReference(value = "category_template" )
     private Set<Template_cross_category_cv> template_cross_category_cvList;
 
 
