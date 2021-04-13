@@ -16,7 +16,7 @@ public class Share_experience {
     private Integer idshare;
 
     @OneToMany(mappedBy = "share_experience")
-    @JsonBackReference
+    @JsonBackReference("comment_share")
     private Set<Comment> commentList;
 
     public Integer getIdshare() {

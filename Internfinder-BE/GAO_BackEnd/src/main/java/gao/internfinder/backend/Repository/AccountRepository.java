@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
 
 @Repository
@@ -23,7 +24,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     /**
     *Kieu Trang
      */
-    @Query(value = "SELECT username from  internfinder_offical.account where username = ?1", nativeQuery = true)
+    @Query(value = "SELECT username from  account where username = ?1", nativeQuery = true)
     String existsByUserName(String username);
 
     /**

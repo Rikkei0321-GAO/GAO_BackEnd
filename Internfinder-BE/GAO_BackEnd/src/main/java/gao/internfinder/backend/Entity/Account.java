@@ -4,68 +4,72 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_account")
     private Integer idAccount;
+
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference(value = "accountRole")
     private Set<AccountRole> accountRoleList;
 
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference(value = "news")
     private Set<News> newsList;
 
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference(value = "comment" )
     private Set<Comment> commentList;
 
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference(value = "Share_experience" )
     private Set<Share_experience> share_experiencesList;
 
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference(value = "pay")
     private Set<Pay> payList;
 
     @OneToMany(mappedBy = "account")
-    @JsonBackReference
+    @JsonBackReference( value = "Created_cv" )
     private Set<Created_cv> created_cvList;
-
+    @Column(name = "username")
     private String username;
-
+    @Column(name = "password")
     private String password;
-
+    @Column(name = "create_date")
     private Date createDate;
-
+    @Column(name = "full_name")
     private String fullName;
-
+    @Column(name = "birthday")
     private Date birthday;
-
+    @Column(name = "sex")
     private Boolean sex;
-
+    @Column(name = "phone")
     private String phone;
-
+    @Column(name = "address")
     private String address;
-
+    @Column(name = "email")
     private String email;
-
+    @Column(name = "company_name")
     private String companyName;
-
+    @Column(name = "tax_code")
     private String taxCode;
-
+    @Column(name = "link")
     private String link;
-
+    @Column(name = "name_contact")
     private String nameContact;
-
+    @Column(name = "status")
     private Boolean status;
-
+    @Column(name = "image")
     private String image;
-
+    @Column(name = "verification_code")
     private String verificationCode;
+
 
     public Account(Integer idAccount, Set<AccountRole> accountRoleList, Set<News> newsList, Set<Comment> commentList, Set<Share_experience> share_experiencesList, Set<Pay> payList, Set<Created_cv> created_cvList, String username, String password, Date createDate, String fullName, Date birthday, Boolean sex, String phone, String address, String email, String companyName, String taxCode, String link, String nameContact, Boolean status, String image, String verificationCode) {
         this.idAccount = idAccount;

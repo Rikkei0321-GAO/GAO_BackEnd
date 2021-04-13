@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    private Integer idNews;
     @ManyToOne
     @JoinColumn(name = "id_account")
     private Account account;
@@ -15,9 +15,6 @@ public class News implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
-
-    private Integer idNews;
-
     private String decriptions;
 
     private String title;
@@ -52,13 +49,10 @@ public class News implements Serializable {
 
     private String phone;
 
-    public News() {
-    }
-
-    public News(Account account, Category category, Integer idNews, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone) {
+    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, Boolean status) {
+        this.idNews = idNews;
         this.account = account;
         this.category = category;
-        this.idNews = idNews;
         this.decriptions = decriptions;
         this.title = title;
         this.image = image;
@@ -76,7 +70,22 @@ public class News implements Serializable {
         this.profile_language = profile_language;
         this.profile_requirement = profile_requirement;
         this.phone = phone;
+        this.status = status;
     }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    private  Boolean status;
+    public News() {
+    }
+
+
 
     public Account getAccount() {
         return account;

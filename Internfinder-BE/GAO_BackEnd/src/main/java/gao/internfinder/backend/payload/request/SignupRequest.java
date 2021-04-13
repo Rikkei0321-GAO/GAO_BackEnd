@@ -1,6 +1,7 @@
 package gao.internfinder.backend.payload.request;
 
 import java.util.Date;
+import java.util.Set;
 
 public class SignupRequest {
     private String username;
@@ -35,6 +36,7 @@ public class SignupRequest {
 
     public SignupRequest() {
     }
+
 
     public SignupRequest(String username, String password, Date createDate, String fullName, Date birthday, Boolean sex, String phone, String address, String email, String nameCompany, String tax, String link, String nameContact, Boolean status, String image) {
         this.username = username;

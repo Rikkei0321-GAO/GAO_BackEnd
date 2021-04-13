@@ -31,9 +31,6 @@ import java.util.stream.Collectors;
 @RequestMapping("api/public")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SecurityController {
-    /**
-     *
-     */
     @Autowired
     private JwtUtility jwtUtility;
     @Autowired
@@ -45,9 +42,6 @@ public class SecurityController {
     @Autowired
     private PasswordEncoder encoder;
 
-    /**
-     *
-     */
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -66,39 +60,40 @@ public class SecurityController {
                 roles));
     }
 
-    /**
-     */
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) throws MessagingException, UnsupportedEncodingException {
-
-                if (accountService.existsByUserName(signUpRequest.getUsername())!=null) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Tên đăng nhập đã được đăng ký!!!"));
-        }
-                //Encode password by BCrypt
-        String passwordEncrypt = encoder.encode(signUpRequest.getPassword());
-
-        //Add new user's account to database
-        accountService.addNew(signUpRequest.getUsername(),
-                passwordEncrypt,
-                signUpRequest.getNameCompany(),
-                signUpRequest.getAddress(),
-                signUpRequest.getPhone(),
-                signUpRequest.getTax(),
-                signUpRequest.getNameContact(),
-                signUpRequest.getEmail()
-                );
-        //Find ID user's account newest after add to database
-//        Integer idAccountAfterCreated = accountService.findIdUserByUserName(signUpRequest.getUsername());
-        //Set default role is "ROLE_USER"
-//        roleService.setDefaultRole(idAccountAfterCreated, 1);
-        //Add new patient
-        return ResponseEntity.ok(new MessageResponse("Đăng ký tài khoản thành công!"));
-    }
+//    /**
+//     * Nguyen Van Linh made it
+//     */
+//    @PostMapping("/signup")
+//    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) throws MessagingException, UnsupportedEncodingException {
+//
+//        if (accountService.existsByUserName(signUpRequest.getUsername())!=null) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Tên đăng nhập đã được đăng ký!!!"));
+//        }
+//        //Encode password by BCrypt
+//        String passwordEncrypt = encoder.encode(signUpRequest.getPassword());
+//
+//        //Add new user's account to database
+//        accountService.addNew(signUpRequest.getUsername(),
+//                passwordEncrypt,
+//                signUpRequest.getNameCompany(),
+//                signUpRequest.getAddress(),
+//                signUpRequest.getPhone(),
+//                signUpRequest.getTax(),
+//                signUpRequest.getNameContact(),
+//                signUpRequest.getEmail()
+//        );
+//        //Find ID user's account newest after add to database
+////        Integer idAccountAfterCreated = accountService.findIdUserByUserName(signUpRequest.getUsername());
+//        //Set default role is "ROLE_USER"
+////        roleService.setDefaultRole(idAccountAfterCreated, 1);
+//        //Add new patient
+//        return ResponseEntity.ok(new MessageResponse("Đăng ký tài khoản thành công!"));
+//    }
 
 //    /**
-//     *
+//     * Nguyen Van Linh made it
 //     */
 //    @PostMapping("/verify")
 //    public ResponseEntity<?> VerifyEmail(@RequestBody VerifyRequest code) {
@@ -111,7 +106,7 @@ public class SecurityController {
 //    }
 //
 //    /**
-//     *
+//     * Nguyen Van Linh made it
 //     */
 //    @PostMapping("/reset-password")
 //    public ResponseEntity<?> reset(@RequestBody LoginRequest loginRequest) throws MessagingException, UnsupportedEncodingException {
@@ -126,7 +121,7 @@ public class SecurityController {
 //    }
 //
 //    /**
-//     *
+//     * Nguyen Van Linh made it
 //     */
 //    @PostMapping("/verify-password")
 //    public ResponseEntity<?> VerifyPassword(@RequestBody VerifyRequest code) {
@@ -139,7 +134,7 @@ public class SecurityController {
 //    }
 //
 //    /**
-//     *
+//     * Nguyen Van Linh made it
 //     */
 //    @PostMapping("/do-reset-password")
 //    public ResponseEntity<?> doResetPassword(@RequestBody ResetPassRequest resetPassRequest) {

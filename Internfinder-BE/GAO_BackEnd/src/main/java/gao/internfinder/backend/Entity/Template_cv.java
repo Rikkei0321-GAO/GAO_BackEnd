@@ -14,11 +14,11 @@ public class Template_cv {
     private Integer idtemplate_CV;
 
     @OneToMany(mappedBy = "template_cv")
-    @JsonBackReference
+    @JsonBackReference(value = "template_cv" )
     private Set<Template_cross_category_cv> template_cross_category_cvList;
 
     @OneToMany(mappedBy = "template_cv")
-    @JsonBackReference
+    @JsonBackReference(value = "cv" )
     private Set<Created_cv> created_cvList;
     private String path;
 
