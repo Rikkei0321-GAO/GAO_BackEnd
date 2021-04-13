@@ -3,8 +3,7 @@ package gao.internfinder.backend.Controllers;
 
 import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.jwt.JwtUtility;
-import gao.internfinder.backend.payload.request.SignupRequest;
-import gao.internfinder.backend.payload.request.LoginRequest;
+import gao.internfinder.backend.payload.request.*;
 import gao.internfinder.backend.payload.response.JwtResponse;
 import gao.internfinder.backend.payload.response.MessageResponse;
 import gao.internfinder.backend.services.AccountService;
@@ -33,6 +32,9 @@ import java.util.stream.Collectors;
 public class SecurityController {
     @Autowired
     private JwtUtility jwtUtility;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -60,86 +62,50 @@ public class SecurityController {
                 roles));
     }
 
-//    /**
-//     * Nguyen Van Linh made it
-//     */
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) throws MessagingException, UnsupportedEncodingException {
-//
-//        if (accountService.existsByUserName(signUpRequest.getUsername())!=null) {
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Tên đăng nhập đã được đăng ký!!!"));
-//        }
-//        //Encode password by BCrypt
-//        String passwordEncrypt = encoder.encode(signUpRequest.getPassword());
-//
-//        //Add new user's account to database
-//        accountService.addNew(signUpRequest.getUsername(),
-//                passwordEncrypt,
-//                signUpRequest.getNameCompany(),
-//                signUpRequest.getAddress(),
-//                signUpRequest.getPhone(),
-//                signUpRequest.getTax(),
-//                signUpRequest.getNameContact(),
-//                signUpRequest.getEmail()
-//        );
-//        //Find ID user's account newest after add to database
-////        Integer idAccountAfterCreated = accountService.findIdUserByUserName(signUpRequest.getUsername());
-//        //Set default role is "ROLE_USER"
-////        roleService.setDefaultRole(idAccountAfterCreated, 1);
-//        //Add new patient
-//        return ResponseEntity.ok(new MessageResponse("Đăng ký tài khoản thành công!"));
-//    }
+    @PostMapping("/verify")
+    public ResponseEntity<?> VerifyEmail(@RequestBody VerifyRequest code)
+    {
+        Boolean isVerified = accountService.findAccountByVerificationCode(code.getCode());
+        if (isVerified)
+        {
+            return ResponseEntity.ok(new MessageResponse("activated"));
+        }else {
+            return ResponseEntity.ok(new MessageResponse("error"));
 
-//    /**
-//     * Nguyen Van Linh made it
-//     */
-//    @PostMapping("/verify")
-//    public ResponseEntity<?> VerifyEmail(@RequestBody VerifyRequest code) {
-//        Boolean isVerified = accountService.findAccountByVerificationCode(code.getCode());
-//        if (isVerified) {
-//            return ResponseEntity.ok(new MessageResponse("activated"));
-//        } else {
-//            return ResponseEntity.ok(new MessageResponse("error"));
-//        }
-//    }
-//
-//    /**
-//     * Nguyen Van Linh made it
-//     */
-//    @PostMapping("/reset-password")
-//    public ResponseEntity<?> reset(@RequestBody LoginRequest loginRequest) throws MessagingException, UnsupportedEncodingException {
-//
-//        if (accountService.existsByUserName(loginRequest.getUsername()) != null) {
-//            accountService.addVerificationCode(loginRequest.getUsername());
-//            return ResponseEntity.ok(new MessageResponse("Sent email "));
-//        }
-//        return ResponseEntity
-//                .badRequest()
-//                .body(new MessageResponse("Tài khoản không đúng"));
-//    }
-//
-//    /**
-//     * Nguyen Van Linh made it
-//     */
-//    @PostMapping("/verify-password")
-//    public ResponseEntity<?> VerifyPassword(@RequestBody VerifyRequest code) {
-//        Boolean isVerified = accountService.findAccountByVerificationCodeToResetPassword(code.getCode());
-//        if (isVerified) {
-//            return ResponseEntity.ok(new MessageResponse("accepted"));
-//        } else {
-//            return ResponseEntity.ok(new MessageResponse("error"));
-//        }
-//    }
-//
-//    /**
-//     * Nguyen Van Linh made it
-//     */
-//    @PostMapping("/do-reset-password")
-//    public ResponseEntity<?> doResetPassword(@RequestBody ResetPassRequest resetPassRequest) {
-//        accountService.saveNewPassword(encoder.encode(resetPassRequest.getPassword()), resetPassRequest.getCode());
-//        return ResponseEntity.ok(new MessageResponse("success"));
-//    }
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> reset(@RequestBody MailRequest mailRequest) throws MessagingException, UnsupportedEncodingException {
+
+        if (accountService.existsByEmail(mailRequest.getEmail()) != null) {
+            accountService.addVerificationCode(mailRequest.getEmail());
+            return ResponseEntity.ok(new MessageResponse("Sent email "));
+        }
+        System.out.println("Can not find email");
+        return ResponseEntity
+                .badRequest()
+                .body(new MessageResponse("Tài khoản không đúng"));
+    }
+
+
+    @PostMapping("/verify-password")
+    public ResponseEntity<?> VerifyPassword(@RequestBody VerifyRequest code) {
+        Boolean isVerified = accountService.findAccountByVerificationCodeToResetPassword(code.getCode());
+        if (isVerified) {
+            return ResponseEntity.ok(new MessageResponse("accepted"));
+
+        }
+        else {
+            return ResponseEntity.ok(new MessageResponse("error"));
+        }
+    }
+    @PostMapping("/do-reset-password")
+    public ResponseEntity<?> doResetPassword(@RequestBody ResetPassRequest resetPassRequest) {
+        accountService.saveNewPassword(passwordEncoder.encode(resetPassRequest.getPassword()), resetPassRequest.getCode());
+        return ResponseEntity.ok(new MessageResponse("success"));
+    }
+
+
 
 }

@@ -52,13 +52,13 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     *Kieu Trang
      */
     @Modifying
-    @Query(value ="update account set verification_code=?1 where user_name =?2",nativeQuery = true)
-    void addVerificationCode(String code,String username);
+    @Query(value ="update account set verification_code=?1 where email =?2",nativeQuery = true)
+    void addVerificationCode(String code,String email);
 
     /**
     *Kieu Trang
      */
     @Modifying
-    @Query(value = "update account set encrypt_pw =?1,verification_code=null where verification_code=?2 ",nativeQuery = true)
+    @Query(value = "update account set password =?1,verification_code=null where verification_code=?2 ",nativeQuery = true)
     void saveNewPassword(String password, String code);
 }

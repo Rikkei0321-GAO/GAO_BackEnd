@@ -11,7 +11,6 @@ import java.util.Set;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_account")
     private Integer idAccount;
 
     @OneToMany(mappedBy = "account")
