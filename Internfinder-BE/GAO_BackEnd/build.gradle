@@ -35,6 +35,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    compile 'com.paypal.sdk:rest-api-sdk:1.14.0'
+
+
 
 }
 
