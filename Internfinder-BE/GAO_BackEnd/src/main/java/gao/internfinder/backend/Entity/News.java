@@ -15,6 +15,7 @@ public class News implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
+
     private String decriptions;
 
     private String title;
@@ -49,7 +50,27 @@ public class News implements Serializable {
 
     private String phone;
 
-    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, Boolean status) {
+    private String Job_requirements;
+
+    private int quanlity;
+
+    private String Type_of_work;
+
+    public News() {
+
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    private  Boolean status;
+
+    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work, Boolean status) {
         this.idNews = idNews;
         this.account = account;
         this.category = category;
@@ -70,22 +91,19 @@ public class News implements Serializable {
         this.profile_language = profile_language;
         this.profile_requirement = profile_requirement;
         this.phone = phone;
+        Job_requirements = job_requirements;
+        this.quanlity = quanlity;
+        Type_of_work = type_of_work;
         this.status = status;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public Integer getIdNews() {
+        return idNews;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setIdNews(Integer idNews) {
+        this.idNews = idNews;
     }
-
-    private  Boolean status;
-    public News() {
-    }
-
-
 
     public Account getAccount() {
         return account;
@@ -101,14 +119,6 @@ public class News implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public Integer getIdNews() {
-        return idNews;
-    }
-
-    public void setIdNews(Integer idNews) {
-        this.idNews = idNews;
     }
 
     public String getDecriptions() {
@@ -245,5 +255,29 @@ public class News implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getJob_requirements() {
+        return Job_requirements;
+    }
+
+    public void setJob_requirements(String job_requirements) {
+        Job_requirements = job_requirements;
+    }
+
+    public int getQuanlity() {
+        return quanlity;
+    }
+
+    public void setQuanlity(int quanlity) {
+        this.quanlity = quanlity;
+    }
+
+    public String getType_of_work() {
+        return Type_of_work;
+    }
+
+    public void setType_of_work(String type_of_work) {
+        Type_of_work = type_of_work;
     }
 }
