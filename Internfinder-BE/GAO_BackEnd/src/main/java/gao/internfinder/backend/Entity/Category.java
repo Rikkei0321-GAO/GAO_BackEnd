@@ -13,7 +13,7 @@ public class Category {
     private Integer idCategory;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference(value = "category_new")
+    @JsonBackReference(value = "category")
    private Set<News> newsList;
 
    private String name;

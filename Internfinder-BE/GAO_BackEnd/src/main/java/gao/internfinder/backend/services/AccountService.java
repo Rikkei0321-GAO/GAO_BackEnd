@@ -18,8 +18,6 @@ public interface AccountService {
      *Kieu Trang
      */
     String existsByUserName(String username);
-
-    String existsByEmail(String email);
     /**
      *Kieu Trang
      */
@@ -42,7 +40,7 @@ public interface AccountService {
     /**
      *Kieu Trang
      */
-    void addVerificationCode(String email) throws MessagingException, UnsupportedEncodingException;
+    void addVerificationCode(String username) throws MessagingException, UnsupportedEncodingException;
 
-    void saveNewPassword(String password, String code);
+
 }
