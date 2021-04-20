@@ -6,6 +6,8 @@ import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 
 public interface AccountService {
+
+
     /**
      *Kieu Trang
      */

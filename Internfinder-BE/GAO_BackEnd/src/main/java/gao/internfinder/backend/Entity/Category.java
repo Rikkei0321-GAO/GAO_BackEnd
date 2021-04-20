@@ -13,7 +13,7 @@ public class Category {
     private Integer idCategory;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference(value = "category_new")
+    @JsonBackReference(value = "news")
    private Set<News> newsList;
 
    private String name;
@@ -33,7 +33,14 @@ public class Category {
   public Category() {
     }
 
-   public Integer getIdCategory() {
+    public Category(News defauldtNew) {
+
+    }
+
+    public Category(String hello, String welcome_to_note_it, News defaultNews) {
+    }
+
+    public Integer getIdCategory() {
        return idCategory;
   }
 
