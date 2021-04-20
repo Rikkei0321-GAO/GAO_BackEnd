@@ -1,4 +1,4 @@
-package gao.internfinder.backend.Controllers;
+package gao.internfinder.backend.controller;
 
 import gao.internfinder.backend.Entity.Category;
 import gao.internfinder.backend.Repository.CategoryRepository;
@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/Category")
 
 public class CategoryController {
 

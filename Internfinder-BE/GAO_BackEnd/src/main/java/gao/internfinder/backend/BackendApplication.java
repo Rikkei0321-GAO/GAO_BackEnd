@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.SecurityDataConfiguration
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+
 public class BackendApplication {
 
     public static void main(String[] args) {
