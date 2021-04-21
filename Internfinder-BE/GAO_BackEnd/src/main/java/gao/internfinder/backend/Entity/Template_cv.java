@@ -1,4 +1,4 @@
-package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
