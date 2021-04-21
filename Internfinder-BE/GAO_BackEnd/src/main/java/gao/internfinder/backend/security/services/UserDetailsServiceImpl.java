@@ -1,7 +1,7 @@
 package gao.internfinder.backend.security.services;
 
 
-import gao.internfinder.backend.Entity.EntityTrang.Account;
+import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

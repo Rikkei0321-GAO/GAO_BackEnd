@@ -74,23 +74,6 @@ public class Share_experience {
     public void setModife_date(Date modife_date) {
         this.modife_date = modife_date;
     }
-
-    public Integer getAccount_idAccount() {
-        return account_idAccount;
-    }
-
-    public void setAccount_idAccount(Integer account_idAccount) {
-        this.account_idAccount = account_idAccount;
-    }
-
-    public String getAccount_role_id_role() {
-        return account_role_id_role;
-    }
-
-    public void setAccount_role_id_role(String account_role_id_role) {
-        this.account_role_id_role = account_role_id_role;
-    }
-
     public String getImage_path() {
         return image_path;
     }
@@ -107,8 +90,6 @@ public class Share_experience {
         this.content = content;
         this.create_date = create_date;
         this.modife_date = modife_date;
-        this.account_idAccount = account_idAccount;
-        this.account_role_id_role = account_role_id_role;
         this.image_path = image_path;
     }
 
@@ -123,10 +104,6 @@ public class Share_experience {
     private Date create_date;
 
     private Date modife_date;
-
-    private Integer account_idAccount;
-
-    private String account_role_id_role;
 
     private String image_path;
 

@@ -1,9 +1,12 @@
 package gao.internfinder.backend.controllers;
 
 
-import gao.internfinder.backend.Entity.EntityTrang.Account;
-import gao.internfinder.backend.Entity.EntityTrang.ERole;
-import gao.internfinder.backend.Entity.EntityTrang.Role;
+import gao.internfinder.backend.Entity.Account;
+import gao.internfinder.backend.Entity.ERole;
+//import gao.internfinder.backend.Entity.EntityTrang.Account;
+//import gao.internfinder.backend.Entity.EntityTrang.ERole;
+//import gao.internfinder.backend.Entity.EntityTrang.Role;
+import gao.internfinder.backend.Entity.Role;
 import gao.internfinder.backend.payload.request.LoginRequest;
 import gao.internfinder.backend.payload.request.SignupRequest;
 import gao.internfinder.backend.payload.response.JwtResponse;
@@ -45,7 +48,7 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
-
+	//dang nhap
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -66,7 +69,7 @@ public class AuthController {
 												 userDetails.getEmail(), 
 												 roles));
 	}
-
+	// dang ki
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (accountRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -82,9 +85,7 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		Account account = new Account(signUpRequest.getUsername(),
-							 signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()));
+		Account account = new Account(signUpRequest.getUsername(),signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()));
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
@@ -138,9 +139,7 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		Account account = new Account(signUpRequest.getUsername(),
-				signUpRequest.getEmail(),
-				encoder.encode(signUpRequest.getPassword()), signUpRequest.getAddress(), signUpRequest.getPhone());
+		Account account = new Account(signUpRequest.getUsername(),signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()), signUpRequest.getAddress(), signUpRequest.getPhone());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();

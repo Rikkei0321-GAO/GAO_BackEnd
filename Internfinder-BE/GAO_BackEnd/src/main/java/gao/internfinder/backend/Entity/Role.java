@@ -6,46 +6,37 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "role")
+@Table(name = "role")
 public class Role {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRole;
-    private String name;
-    @OneToMany(mappedBy = "role")
-    @JsonBackReference("AccountRole" )
-    private Set<AccountRole> accountRoleList;
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+	private ERole name;
 
-    public Role() {
+	public Role() {
     }
 
-    public Role(Integer idRole, String name, Set<AccountRole> accountRoleList) {
-        this.idRole = idRole;
+    public Role(Integer id, ERole name) {
+        this.id = id;
         this.name = name;
-        this.accountRoleList = accountRoleList;
     }
 
-    public Integer getIdRole() {
-        return idRole;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getName() {
+    public ERole getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
-    }
-
-    public Set<AccountRole> getAccountRoleList() {
-        return accountRoleList;
-    }
-
-    public void setAccountRoleList(Set<AccountRole> accountRoleList) {
-        this.accountRoleList = accountRoleList;
     }
 }

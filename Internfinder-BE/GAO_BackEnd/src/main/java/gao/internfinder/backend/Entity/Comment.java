@@ -50,22 +50,12 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public Integer getShare_idshare() {
-        return share_idshare;
-    }
-
-    public void setShare_idshare(Integer share_idshare) {
-        this.share_idshare = share_idshare;
-    }
-
     public Comment(Integer idcoment, Share_experience share_experience, Account account, Date create_date, String content, Integer share_idshare) {
         this.idcoment = idcoment;
         this.share_experience = share_experience;
         this.account = account;
         this.create_date = create_date;
         this.content = content;
-        this.share_idshare = share_idshare;
     }
 
     @ManyToOne
@@ -79,8 +69,6 @@ public class Comment {
     private Date create_date;
 
     private String content;
-
-    private Integer share_idshare;
 
     public Comment() {
 
