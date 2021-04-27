@@ -1,11 +1,14 @@
 package gao.internfinder.backend.controllers;
 
+import gao.internfinder.backend.Entity.Comment;
 import gao.internfinder.backend.Entity.Share_experience;
 
 import gao.internfinder.backend.Service.ShareExService;
 import gao.internfinder.backend.dto.ShareExDTO;
 import gao.internfinder.backend.repository.ShareExRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +21,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/dangbaichiase")
+    @RequestMapping("/dangbaichiase")
 public class ShareEXController {
     @Autowired
     private ShareExRepository shareExRepo;

@@ -1,20 +1,9 @@
-package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
+package gao.internfinder.backend.dto;
 
-import javax.persistence.*;
-import java.io.Serializable;
+public class NewsDto {
+    private int id_account;
 
-@Entity(name = "news")
-public class News implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idNews;
-    @ManyToOne
-    @JoinColumn(name = "id_account")
-    private Account account;
-
-    @ManyToOne
-    @JoinColumn(name = "id_category")
-    private Category category;
+    private int id_category;
 
     private String decriptions;
 
@@ -56,28 +45,12 @@ public class News implements Serializable {
 
     private String Type_of_work;
 
-    public News() {
-
+    public NewsDto() {
     }
 
-    public News(String title) {
-    }
-
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    private  Boolean status;
-
-    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work, Boolean status) {
-        this.idNews = idNews;
-        this.account = account;
-        this.category = category;
+    public NewsDto( int id_account, int id_category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work) {
+        this.id_account = id_account;
+        this.id_category = id_category;
         this.decriptions = decriptions;
         this.title = title;
         this.image = image;
@@ -98,31 +71,22 @@ public class News implements Serializable {
         Job_requirements = job_requirements;
         this.quanlity = quanlity;
         Type_of_work = type_of_work;
-        this.status = status;
     }
 
-    public Integer getIdNews() {
-        return idNews;
+    public int getId_account() {
+        return id_account;
     }
 
-    public void setIdNews(Integer idNews) {
-        this.idNews = idNews;
+    public void setId_account(int id_account) {
+        this.id_account = id_account;
     }
 
-    public Account getAccount() {
-        return account;
+    public int getId_category() {
+        return id_category;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 
     public String getDecriptions() {
