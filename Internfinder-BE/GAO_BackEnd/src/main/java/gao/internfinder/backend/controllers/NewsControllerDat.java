@@ -1,4 +1,5 @@
 package gao.internfinder.backend.controllers;
+import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.Entity.News;
 
 import gao.internfinder.backend.repository.NewsRepository;
@@ -45,4 +46,10 @@ public class NewsControllerDat {
             return new ResponseEntity<News>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping(path ="/seach/{searchtext}")
+    public List<News> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return newsRepo.findByTitle(search);
+    }
+
 }

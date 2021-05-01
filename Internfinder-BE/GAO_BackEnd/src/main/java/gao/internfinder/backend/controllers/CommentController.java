@@ -2,6 +2,8 @@ package gao.internfinder.backend.controllers;
 
 import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.Entity.Comment;
+import gao.internfinder.backend.Entity.News;
+import gao.internfinder.backend.Entity.Share_experience;
 import gao.internfinder.backend.Service.CommentService;
 import gao.internfinder.backend.dto.CommentDTO;
 
@@ -32,7 +34,7 @@ public class CommentController {
     @RequestMapping(value = "/{id}/{page}")
     private  ResponseEntity<Comment> getAllByIDshare( @PathVariable("id") Integer id, @PathVariable("page")int page){
         try {
-            Page<Comment> cm = commentRepository.findAllByShare_experience(id,PageRequest.of(page,3));
+            Page<Comment> cm = commentRepository.findAllByShare_experience(id,PageRequest.of(page,5));
             return  new ResponseEntity(cm, HttpStatus.OK);
         }
         catch (Exception exception){
@@ -73,7 +75,18 @@ public class CommentController {
     public void delete(@PathVariable Integer id) {
         commentRepository.deleteById(id);
     }
-
-
-
+    @GetMapping(path ="/seach/{searchtext}")
+    public List<Comment> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return commentRepository.findByContent(search);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Comment> getID(@PathVariable Integer id) {
+        try {
+                Comment st = commentRepository.findById(id).get();
+            return new ResponseEntity<Comment>(st, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Comment>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

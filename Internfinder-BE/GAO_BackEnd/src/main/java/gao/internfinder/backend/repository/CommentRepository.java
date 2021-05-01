@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 @Repository
@@ -32,4 +33,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     @Query(value = "SELECT * FROM `comment` where `comment`.`idcoment` = ?1", nativeQuery = true)
     Comment findByIdcoment(Integer id);
+    @Query(value = "select * from  comment  cm where  cm.content like ?1", nativeQuery = true)
+    List<Comment> findByContent(String fullname);
 }

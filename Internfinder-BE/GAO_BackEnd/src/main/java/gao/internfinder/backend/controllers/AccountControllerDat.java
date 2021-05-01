@@ -20,7 +20,12 @@ public class AccountControllerDat {
     public List<Account> getAll(){
         return accountRepo.findAll();
     }
-    @DeleteMapping("/delete/{id}")
+    @GetMapping(path ="/seach/{searchtext}")
+    public List<Account> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+            return accountRepo.findByAddress(search);
+    }
+        @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         accountRepo.deleteById(id);
     }
@@ -31,6 +36,18 @@ public class AccountControllerDat {
             Account account1 = accountRepo.findById(id).get();
             account1.setPassword(account.getPassword());
             account1.setStatus(account.getStatus());
+            account1.setAddress(account .getAddress());
+            account1.setBirthday(account.getBirthday());
+            account1.setCompanyName(account.getCompanyName());
+            account1.setCreateDate(account.getCreateDate());
+            account1.setEmail(account.getEmail());
+            account1.setEmail_contact(account.getEmail_contact());
+            account1.setSex(account.getSex());
+            account1.setNameContact(account.getNameContact());
+            account1.setLink(account.getLink());
+            account1.setPhone(account.getPhone());
+            account1.setImage(account.getImage());
+
             accountRepo.save(account1);
             return  new ResponseEntity<>(HttpStatus.OK);
         }

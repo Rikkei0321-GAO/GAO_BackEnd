@@ -1,6 +1,7 @@
 package gao.internfinder.backend.controllers;
 
 import gao.internfinder.backend.Entity.Comment;
+import gao.internfinder.backend.Entity.News;
 import gao.internfinder.backend.Entity.Share_experience;
 
 import gao.internfinder.backend.Service.ShareExService;
@@ -64,5 +65,10 @@ public class ShareEXController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/{id}").buildAndExpand(shareExDTO.getId_account()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+    @GetMapping(path ="/seach/{searchtext}")
+    public List<Share_experience> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return shareExRepo.findAllByTitle(search);
     }
 }
