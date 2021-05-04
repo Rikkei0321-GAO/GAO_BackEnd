@@ -24,23 +24,23 @@ public class Account {
     private Date brithday;
    // @Column(name = "sex")
     private Boolean sex;
-    @Column(name = "phone")
+    //@Column(name = "phone")
     private String phone;
-    @Column(name = "address")
+    //@Column(name = "address")
     private String address;
-    @Column(name = "email")
+   // @Column(name = "email")
     private String email;
-    @Column(name = "compy_name")
+   // @Column(name = "compy_name")
     private String compyName;
-    @Column(name = "tax_Code")
+  //  @Column(name = "tax_Code")
     private String taxCode;
-    @Column(name = "link")
+  //  @Column(name = "link")
     private String link;
-    @Column(name = "name_contact")
+   // @Column(name = "name_contact")
     private String nameContact;
-    @Column(name = "status")
+   // @Column(name = "status")
     private Boolean status;
-   @Column(name = "image")
+   //@Column(name = "image")
     private String image;
 
     private String verificationCode;

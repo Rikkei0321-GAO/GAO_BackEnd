@@ -10,7 +10,6 @@ import java.util.Set;
 public class Template_cv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer idtemplate_CV;
 
     @OneToMany(mappedBy = "template_cv")
@@ -20,6 +19,7 @@ public class Template_cv {
     @OneToMany(mappedBy = "template_cv")
     @JsonBackReference(value = "cv" )
     private Set<Created_cv> created_cvList;
+
     private String path;
 
     private Date create_date;
