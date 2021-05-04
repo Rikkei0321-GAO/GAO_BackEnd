@@ -18,6 +18,6 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
     @Query(value = "select * from News where id = ?", nativeQuery = true)
     News getByIdNews(Integer id);
 
-    @Query(value = "select  * from  news ns where ns.title like ?1", nativeQuery = true)
+    @Query(value = "select  * from  news ns, account ac where  ns.title like ?1", nativeQuery = true)
     List<News>findByTitle(String title);
 }

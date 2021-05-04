@@ -34,7 +34,7 @@ public class CommentController {
     @RequestMapping(value = "/{id}/{page}")
     private  ResponseEntity<Comment> getAllByIDshare( @PathVariable("id") Integer id, @PathVariable("page")int page){
         try {
-            Page<Comment> cm = commentRepository.findAllByShare_experience(id,PageRequest.of(page,15    ));
+            Page<Comment> cm = commentRepository.findAllByShare_experience(id,PageRequest.of(page,15 ));
             return  new ResponseEntity(cm, HttpStatus.OK);
         }
         catch (Exception exception){

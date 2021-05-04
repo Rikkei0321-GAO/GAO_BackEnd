@@ -55,6 +55,11 @@ public class NewsControllerDat {
         String search = "%" + searchtext + "%";
         return newsRepo.findByTitle(search);
     }
+    @GetMapping(path ="/seach/ntd/{searchtext}")
+    public List<News> getSKbytextNtd(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return newsRepo.findByTitle(search);
+    }
     @RequestMapping(value = "mybaidang/{id}")
     private  ResponseEntity<News> getAllbyid(@PathVariable("id") Integer id){
             try {
