@@ -2,6 +2,7 @@ package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entit
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity(name = "news")
 public class News implements Serializable {
@@ -55,6 +56,19 @@ public class News implements Serializable {
     private int quanlity;
 
     private String Type_of_work;
+    private Date create_date;
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public News(Date create_date) {
+        this.create_date = create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
 
     public News() {
 

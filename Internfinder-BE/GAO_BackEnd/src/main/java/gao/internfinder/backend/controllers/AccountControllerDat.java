@@ -42,7 +42,7 @@ public class AccountControllerDat {
             account1.setCreateDate(account.getCreateDate());
             account1.setEmail(account.getEmail());
             account1.setEmail_contact(account.getEmail_contact());
-            account1.setSex(account.getSex());
+            account1.setSex(account.getSex())       ;
             account1.setNameContact(account.getNameContact());
             account1.setLink(account.getLink());
             account1.setPhone(account.getPhone());
