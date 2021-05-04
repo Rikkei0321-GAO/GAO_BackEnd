@@ -1,7 +1,11 @@
 package gao.internfinder.backend.Entity;//package gao.internfinder.backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 
 @Entity(name = "news")
 public class News implements Serializable {
@@ -56,6 +60,22 @@ public class News implements Serializable {
 
     private String Type_of_work;
 
+    private Date createDate;
+
+    private  Boolean status;
+
+    @OneToMany(mappedBy = "news")
+    @JsonBackReference(value = "cv_apply")
+    private Set<CV_Apply> cv_applies;
+
+    public Set<CV_Apply> getCv_applies() {
+        return cv_applies;
+    }
+
+    public void setCv_applies(Set<CV_Apply> cv_applies) {
+        this.cv_applies = cv_applies;
+    }
+
     public News() {
 
     }
@@ -72,9 +92,8 @@ public class News implements Serializable {
         this.status = status;
     }
 
-    private  Boolean status;
 
-    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work, Boolean status) {
+    public News(Integer idNews, Account account, Category category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work,Date createDate, Boolean status) {
         this.idNews = idNews;
         this.account = account;
         this.category = category;
@@ -98,6 +117,7 @@ public class News implements Serializable {
         Job_requirements = job_requirements;
         this.quanlity = quanlity;
         Type_of_work = type_of_work;
+        this.createDate = createDate;
         this.status = status;
     }
 
@@ -283,5 +303,13 @@ public class News implements Serializable {
 
     public void setType_of_work(String type_of_work) {
         Type_of_work = type_of_work;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

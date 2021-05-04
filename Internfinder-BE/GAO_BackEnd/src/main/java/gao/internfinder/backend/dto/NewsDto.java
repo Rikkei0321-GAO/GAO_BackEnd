@@ -1,5 +1,7 @@
 package gao.internfinder.backend.dto;
 
+import java.util.Date;
+
 public class NewsDto {
     private int id_account;
 
@@ -45,10 +47,14 @@ public class NewsDto {
 
     private String Type_of_work;
 
+    private String Status;
+
+    private Date createDate;
+
     public NewsDto() {
     }
 
-    public NewsDto( int id_account, int id_category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work) {
+    public NewsDto(int id_account, int id_category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work, String status, Date createDate) {
         this.id_account = id_account;
         this.id_category = id_category;
         this.decriptions = decriptions;
@@ -71,6 +77,8 @@ public class NewsDto {
         Job_requirements = job_requirements;
         this.quanlity = quanlity;
         Type_of_work = type_of_work;
+        Status = status;
+        this.createDate = createDate;
     }
 
     public int getId_account() {
@@ -247,5 +255,21 @@ public class NewsDto {
 
     public void setType_of_work(String type_of_work) {
         Type_of_work = type_of_work;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 }
