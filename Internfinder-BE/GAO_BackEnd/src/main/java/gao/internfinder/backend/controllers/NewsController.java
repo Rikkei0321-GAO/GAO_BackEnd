@@ -36,6 +36,7 @@ public class NewsController {
     public ResponseEntity<List<Category>> getAllCategory(){
         return new ResponseEntity<List<Category>>(categorySer.findAllCategory(),HttpStatus.OK);
     }
+
     @RequestMapping(value = "/editNews",method = RequestMethod.PUT)
     public ResponseEntity<?> editPost(@Valid @RequestBody News st){
         News ns = newsService.findById(st.getIdNews());
@@ -64,5 +65,4 @@ public class NewsController {
         ns.setCategory(st.getCategory());
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
