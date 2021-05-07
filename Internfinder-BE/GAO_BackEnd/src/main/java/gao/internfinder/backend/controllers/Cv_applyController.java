@@ -46,5 +46,4 @@ public class Cv_applyController {
         return cvApplyRepository.findAll();
     }
 
-
 }

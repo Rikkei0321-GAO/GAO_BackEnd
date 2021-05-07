@@ -56,6 +56,7 @@ public class News implements Serializable {
     private int quanlity;
 
     private String Type_of_work;
+
     private Date create_date;
 
     public Date getCreate_date() {
