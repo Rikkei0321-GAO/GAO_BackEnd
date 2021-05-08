@@ -27,8 +27,8 @@ public class Account {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "account_roles",
-            joinColumns = @JoinColumn(name = "acc_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+            joinColumns = @JoinColumn(name = "id_account"),
+            inverseJoinColumns = @JoinColumn(name = "id_role"))
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "account")
@@ -88,6 +88,45 @@ public class Account {
     private String website;
     @Size(max = 120)
     private String email_contact;
+    private String postion;
+
+    public String getPostion() {
+        return postion;
+    }
+
+    public void setPostion(String postion) {
+        this.postion = postion;
+    }
+
+    public Account(Integer id_account, Set<Role> roles, Set<News> newsList, Set<Comment> commentList, Set<Share_experience> share_experiencesList, Set<Pay> payList, Set<Created_cv> created_cvList, String username, String password, Date createDate, String fullName, Date birthday, Boolean sex, String phone, String address, String email, String companyName, String taxCode, String link, String nameContact, Boolean status, String image, String verificationCode, @Size(max = 120) String company_address, @Size(max = 120) String website, @Size(max = 120) String email_contact, String postion) {
+        this.id_account = id_account;
+        this.roles = roles;
+        this.newsList = newsList;
+        this.commentList = commentList;
+        this.share_experiencesList = share_experiencesList;
+        this.payList = payList;
+        this.created_cvList = created_cvList;
+        this.username = username;
+        this.password = password;
+        this.createDate = createDate;
+        this.fullName = fullName;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.companyName = companyName;
+        this.taxCode = taxCode;
+        this.link = link;
+        this.nameContact = nameContact;
+        this.status = status;
+        this.image = image;
+        this.verificationCode = verificationCode;
+        this.company_address = company_address;
+        this.website = website;
+        this.email_contact = email_contact;
+        this.postion = postion;
+    }
 
     public Account() {
     }
@@ -300,34 +339,6 @@ public class Account {
         this.email_contact = email_contact;
     }
 
-    public Account(Integer id_account, Set<Role> roles, Set<News> newsList, Set<Comment> commentList, Set<Share_experience> share_experiencesList, Set<Pay> payList, Set<Created_cv> created_cvList, String username, String password, Date createDate, String fullName, Date birthday, Boolean sex, String phone, String address, String email, String companyName, String taxCode, String link, String nameContact, Boolean status, String image, String verificationCode, @Size(max = 120) String company_address, @Size(max = 120) String website, @Size(max = 120) String email_contact) {
-        this.id_account = id_account;
-        this.roles = roles;
-        this.newsList = newsList;
-        this.commentList = commentList;
-        this.share_experiencesList = share_experiencesList;
-        this.payList = payList;
-        this.created_cvList = created_cvList;
-        this.username = username;
-        this.password = password;
-        this.createDate = createDate;
-        this.fullName = fullName;
-        this.birthday = birthday;
-        this.sex = sex;
-        this.phone = phone;
-        this.address = address;
-        this.email = email;
-        this.companyName = companyName;
-        this.taxCode = taxCode;
-        this.link = link;
-        this.nameContact = nameContact;
-        this.status = status;
-        this.image = image;
-        this.verificationCode = verificationCode;
-        this.company_address = company_address;
-        this.website = website;
-        this.email_contact = email_contact;
-    }
 
     public Account(String username, String email, String password) {
 		this.username = username;

@@ -29,13 +29,13 @@ public class ExcelUtil {
 
     public static String exportExcel(String fileName, InputStream templateFile, Context context,
                                    HttpServletResponse response) throws IOException, OfficeException {
-        String urlFileOut = "C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\FileOutput\\"+fileName;
+        String urlFileOut = "G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\FileOutput\\"+fileName;
         officeManager.start();
         response.reset();
         response.setHeader("Accept-Ranges", "bytes");
         response.setHeader("Content-disposition", String.format("attachment; filename=\"%s\"", fileName));
         response.setContentType("application/octet-stream;charset=UTF-8");
-        File osFile = new File("C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\target\\res.xlsx");
+        File osFile = new File("G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\target\\res.xlsx");
         File pdf = new File(urlFileOut);
         OutputStream os = response.getOutputStream();
         OutputStream osExcel = null;

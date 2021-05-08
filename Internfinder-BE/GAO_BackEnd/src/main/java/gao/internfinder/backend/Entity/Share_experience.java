@@ -15,7 +15,7 @@ public class Share_experience {
 
     private Integer idshare;
 
-    @OneToMany(mappedBy = "share_experience")
+    @OneToMany(mappedBy = "share_experience", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonBackReference("comment_share")
     private Set<Comment> commentList;
 
