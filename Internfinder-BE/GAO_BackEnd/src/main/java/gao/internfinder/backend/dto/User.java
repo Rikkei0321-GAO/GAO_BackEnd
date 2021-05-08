@@ -1,7 +1,6 @@
 package gao.internfinder.backend.dto;
 
-public class user {
-
+public class User {
     private String firstName;
     private String lastName;
     private String dayOfBirth;
@@ -10,12 +9,16 @@ public class user {
     private String gender;
     private String objective;
     private String avatar;
-    private String adress;
+    private String address;
+    private String overView;
+    private byte[] image;
+    private String idtemplate;
+    //private List<education> educations;
 
-    public user() {
+    public User() {
     }
 
-    public user(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String adress) {
+    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, byte[] image, String idtemplate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dayOfBirth = dayOfBirth;
@@ -24,7 +27,10 @@ public class user {
         this.gender = gender;
         this.objective = objective;
         this.avatar = avatar;
-        this.adress = adress;
+        this.address = address;
+        this.overView = overView;
+        this.image = image;
+        this.idtemplate = idtemplate;
     }
 
     public String getFirstName() {
@@ -91,11 +97,35 @@ public class user {
         this.avatar = avatar;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getOverView() {
+        return overView;
+    }
+
+    public void setOverView(String overView) {
+        this.overView = overView;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getIdtemplate() {
+        return idtemplate;
+    }
+
+    public void setIdtemplate(String idtemplate) {
+        this.idtemplate = idtemplate;
     }
 }

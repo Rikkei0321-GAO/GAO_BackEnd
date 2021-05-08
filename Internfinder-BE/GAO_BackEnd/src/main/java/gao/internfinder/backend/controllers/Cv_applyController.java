@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/quanlycvapply")
 public class Cv_applyController {
+
     @Autowired
     CvApplyRepository cvApplyRepository;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

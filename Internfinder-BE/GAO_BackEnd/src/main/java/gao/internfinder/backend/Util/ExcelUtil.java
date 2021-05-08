@@ -1,80 +1,62 @@
 package gao.internfinder.backend.Util;
 
-import org.jxls.area.Area;
-import org.jxls.builder.AreaBuilder;
-import org.jxls.builder.xls.XlsCommentAreaBuilder;
-import org.jxls.common.CellRef;
+
+import org.jodconverter.core.document.DefaultDocumentFormatRegistry;
+import org.jodconverter.core.document.DocumentFamily;
+import org.jodconverter.core.document.DocumentFormat;
+import org.jodconverter.core.office.OfficeException;
+import org.jodconverter.local.LocalConverter;
+import org.jodconverter.local.office.LocalOfficeManager;
 import org.jxls.common.Context;
-import org.jxls.expression.JexlExpressionEvaluator;
 import org.jxls.transform.Transformer;
 import org.jxls.util.JxlsHelper;
-import org.jxls.util.TransformerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.net.URL;
+
 
 public class ExcelUtil {
-    public static void exportExcel(String fileName, InputStream templateFile, Context params,
-                                   HttpServletResponse response) throws IOException {
+
+    String pathFileOP = "C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\FileOutput\\";
+
+    static LocalOfficeManager officeManager = LocalOfficeManager.builder()
+            .install()
+            .officeHome("C:\\Program Files (x86)\\LibreOffice")
+            .portNumbers(1999)
+            .build();
+
+    public static String exportExcel(String fileName, InputStream templateFile, Context context,
+                                   HttpServletResponse response) throws IOException, OfficeException {
+        String urlFileOut = "C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\FileOutput\\"+fileName;
+        officeManager.start();
         response.reset();
         response.setHeader("Accept-Ranges", "bytes");
-        OutputStream os = null;
         response.setHeader("Content-disposition", String.format("attachment; filename=\"%s\"", fileName));
         response.setContentType("application/octet-stream;charset=UTF-8");
-        try {
-            os = response.getOutputStream();
-            exportExcels(templateFile, params, os);
-        } catch (IOException e) {
-            throw e;
-        }
-    }
+        File osFile = new File("C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\target\\res.xlsx");
+        File pdf = new File(urlFileOut);
+        OutputStream os = response.getOutputStream();
+        OutputStream osExcel = null;
+        osExcel = new FileOutputStream(osFile);
 
-    public static void exportExcel(InputStream templateFile, Map<String, Object> params, OutputStream os) throws IOException {
-        try {
-            Context context = new Context();
-            Set<String> keySet = params.keySet();
-            for (String key : keySet) {
-                //设置参数变量
-                context.putVar(key, params.get(key));
-            }
-            Map<String, Object> myFunction = new HashMap<>();
-            myFunction.put("fun", new ExcelUtil());
-            // 启动新的jxls-api 加载自定义方法
-            Transformer trans = TransformerFactory.createTransformer(templateFile, os);
-            JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) trans.getTransformationConfig().getExpressionEvaluator();
-            evaluator.getJexlEngine().setFunctions(myFunction);
-
-            AreaBuilder areaBuilder = new XlsCommentAreaBuilder(trans);
-            List<Area> areaList = areaBuilder.build();
-            areaList.get(0).applyAt(new CellRef("sheet1!A1"), context);
-            trans.write();
-        } catch (IOException e) {
-            throw e;
-        } finally {
-            try {
-                if (os != null) {
-                    os.flush();
-                    os.close();
-                }
-                if (templateFile != null) {
-                    templateFile.close();
-                }
-            } catch (IOException e) {
-                throw e;
-            }
-        }
-    }
-
-    public static void exportExcels(InputStream templateFile, Context params, OutputStream os) throws IOException {
         JxlsHelper jxlsHelper = JxlsHelper.getInstance();
-        Transformer transformer = jxlsHelper.createTransformer(templateFile, os);
-       // JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
-        jxlsHelper.processTemplate(params,transformer);
+        Transformer transformer = jxlsHelper.createTransformer(templateFile,osExcel);
+        // JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
+        jxlsHelper.processTemplate(context,transformer);
+            if(osExcel != null ){
+                //JodConverter.convert(osFile).to(os);
+                DocumentFormat converter =
+                        DocumentFormat.builder()
+                                .from(DefaultDocumentFormatRegistry.PDF)
+                                .storeProperty(DocumentFamily.TEXT, "FilterOptions", "EmbedImages")
+                                .build();
+                LocalConverter.make().convert(osFile).to(pdf).as(converter).execute();
+                LocalConverter.make().convert(osFile).to(os).as(converter).execute();
+//            }
+        }
+            officeManager.stop();
+            return urlFileOut;
     }
 }
