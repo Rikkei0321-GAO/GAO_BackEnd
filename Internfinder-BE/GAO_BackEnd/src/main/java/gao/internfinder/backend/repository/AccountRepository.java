@@ -16,6 +16,9 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
 	Boolean existsByUsername(String username);
 
+	@Query(value = "select ac.status from  account ac where  ac.username = ?1", nativeQuery = true)
+	Boolean checkstatus(String username);
+
 	Boolean existsByEmail(String email);
 	@Query(value = "select * from  account ac where  ac.address like  ?1", nativeQuery = true)
 	List<Account> findByAddress(String address);

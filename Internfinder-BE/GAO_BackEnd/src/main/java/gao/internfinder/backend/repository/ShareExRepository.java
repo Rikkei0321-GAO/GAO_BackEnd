@@ -16,12 +16,14 @@ import java.util.List;
 @Transactional
 public interface ShareExRepository extends JpaRepository<Share_experience, Integer> {
     @Modifying
-    @Query(value = "INSERT INTO `share_experience`(`content`, `title`,`modife_date`,`create_date`,`id_account`, `idshare` ,`image_path`) " +
+    @Query(value = "INSERT INTO `share_experience`(`content`, `title`,`create_date`,`modife_date`,`id_account`, `idshare` ,`image_path`) " +
             "value (?1, ?2, ?3, ?4, ?5,?6,?7) ", nativeQuery = true)
-    void createSharePost(String content, String title, Date modife_date, Date create_date, Integer id_account, Integer idshare, String image_path);
+    void createSharePost(String content, String title,  Date create_date, Date modife_date, Integer id_account, Integer idshare, String image_path);
 
-    @Query(value = "select * from share_experience cm order by cm.modife_date desc ", nativeQuery = true)
-    List<Share_experience> findAll();
+//    @Query(value = "select * from share_experience cm order by cm.modife_date desc ", nativeQuery = true)
+//    List<Share_experience> findAll();
     @Query(value = "select  * from  share_experience cm where  cm.title like ?1", nativeQuery = true)
     List<Share_experience> findAllByTitle(String title);
+    @Query(value = "select * from  share_experience  cm order by  cm.create_date desc ",nativeQuery = true)
+    List<Share_experience>findAll();
 }

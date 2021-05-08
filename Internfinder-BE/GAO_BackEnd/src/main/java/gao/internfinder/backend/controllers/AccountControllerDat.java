@@ -34,7 +34,7 @@ public class AccountControllerDat {
     public ResponseEntity<?>Edit(@RequestBody Account account, @PathVariable Integer id ){
         try{
             Account account1 = accountRepo.findById(id).get();
-            account1.setPassword(account.getPassword());
+            account1.setFullName(account.getFullName());
             account1.setStatus(account.getStatus());
             account1.setAddress(account .getAddress());
             account1.setBirthday(account.getBirthday());
@@ -47,7 +47,10 @@ public class AccountControllerDat {
             account1.setLink(account.getLink());
             account1.setPhone(account.getPhone());
             account1.setImage(account.getImage());
-
+            account1.setWebsite(account.getWebsite());
+            account1.setCompany_address(account.getCompany_address());
+            account1.setPostion(account.getPostion());
+            account1.setTaxCode(account.getTaxCode());
             accountRepo.save(account1);
             return  new ResponseEntity<>(HttpStatus.OK);
         }

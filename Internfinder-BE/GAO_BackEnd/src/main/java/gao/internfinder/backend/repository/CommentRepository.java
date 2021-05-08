@@ -35,4 +35,5 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     Comment findByIdcoment(Integer id);
     @Query(value = "select * from  comment  cm where  cm.content like ?1", nativeQuery = true)
     List<Comment> findByContent(String fullname);
+
 }

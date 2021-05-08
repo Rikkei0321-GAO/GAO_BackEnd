@@ -6,6 +6,7 @@ import gao.internfinder.backend.Entity.Share_experience;
 
 import gao.internfinder.backend.Service.ShareExService;
 import gao.internfinder.backend.dto.ShareExDTO;
+import gao.internfinder.backend.repository.CommentRepository;
 import gao.internfinder.backend.repository.ShareExRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.io.Console;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -26,12 +28,15 @@ import java.util.NoSuchElementException;
 public class ShareEXController {
     @Autowired
     private ShareExRepository shareExRepo;
+    @Autowired
+    private  CommentRepository commentRepository;
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public List<Share_experience> getAll(){
         return shareExRepo.findAll();
     }
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable Integer id)
+    {
         shareExRepo.deleteById(id);
     }
 
