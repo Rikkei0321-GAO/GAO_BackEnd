@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    @Query(value = "select category.id_category as id_category, category.name as nameCategory from policy",nativeQuery = true)
+    @Query(value = "select category.id_category as id_category, category.name as nameCategory from category",nativeQuery = true)
     List<ICategory> getAllCategory();
 }
 
