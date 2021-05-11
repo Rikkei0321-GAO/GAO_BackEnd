@@ -1,5 +1,6 @@
 package gao.internfinder.backend.controllers;
 
+import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.Service.ExcelService;
 import gao.internfinder.backend.Service.ICreateCV;
 import gao.internfinder.backend.dto.CVDTO;
@@ -10,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.jxls.common.Context;
 import org.jxls.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ResourceUtils;
@@ -27,6 +29,7 @@ import java.util.UUID;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/cv")
 public class CV_createdController {
 
@@ -42,7 +45,7 @@ public class CV_createdController {
     public ResponseEntity<Void> inputData(@RequestBody DataCVDTO data) throws IOException {
         User user = new User();
         user = createCV.postdata(data);
-        String avatar = data.get_avatar();
+        String avatar = data.getAvatar();
         boolean bl = false;
         StringBuffer fileName = new StringBuffer();
         fileName.append(UUID.randomUUID().toString().replaceAll("-", ""));
@@ -78,10 +81,9 @@ public class CV_createdController {
         cvdto.setTemplate_cv(idTemlate);
         cvdto.setFile_name(filename);
         cvdto.setCreate_date(Date.valueOf(LocalDate.now()));
-        String path = excelService.getExcel("template-hoanganh_demo.xlsx",filename, context,response);
+        String path = excelService.getExcel("template-hoanganh_demo.xlsx",filename, context, response);
         cvdto.setPath(path);
         createCV.addCV(cvdto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

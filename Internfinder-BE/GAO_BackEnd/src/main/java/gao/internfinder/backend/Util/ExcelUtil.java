@@ -10,11 +10,8 @@ import org.jodconverter.local.office.LocalOfficeManager;
 import org.jxls.common.Context;
 import org.jxls.transform.Transformer;
 import org.jxls.util.JxlsHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URL;
 
 
 public class ExcelUtil {
@@ -23,7 +20,7 @@ public class ExcelUtil {
 
     static LocalOfficeManager officeManager = LocalOfficeManager.builder()
             .install()
-            .officeHome("C:\\Program Files (x86)\\LibreOffice")
+            .officeHome("C:\\Program Files (x86)\\OpenOffice 4")
             .portNumbers(1999)
             .build();
 
@@ -46,14 +43,16 @@ public class ExcelUtil {
         // JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
         jxlsHelper.processTemplate(context,transformer);
             if(osExcel != null ){
-                //JodConverter.convert(osFile).to(os);
-                DocumentFormat converter =
+                //JodConverter.convert(osFile).to(pdf).execute();
+
+               DocumentFormat converter =
                         DocumentFormat.builder()
                                 .from(DefaultDocumentFormatRegistry.PDF)
                                 .storeProperty(DocumentFamily.TEXT, "FilterOptions", "EmbedImages")
                                 .build();
-                LocalConverter.make().convert(osFile).to(pdf).as(converter).execute();
-                LocalConverter.make().convert(osFile).to(os).as(converter).execute();
+                //JodConverter.convert(osFile).to(os).as(converter).execute();
+                 LocalConverter.make().convert(osFile).to(pdf).as(converter).execute();
+                 LocalConverter.make().convert(osFile).to(os).as(converter).execute();
 //            }
         }
             officeManager.stop();
