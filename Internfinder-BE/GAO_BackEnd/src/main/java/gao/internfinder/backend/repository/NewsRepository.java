@@ -20,4 +20,7 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
 
     @Query(value = "select  * from  news ns, account ac where  ns.title like ?1", nativeQuery = true)
     List<News>findByTitle(String title);
+
+    @Query(value = "select * from `news`  where news.status = 1 order by create_date desc ", nativeQuery = true)
+    List<News> findAllDay();
 }

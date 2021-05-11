@@ -5,6 +5,7 @@ import gao.internfinder.backend.Entity.Cv_apply;
 import gao.internfinder.backend.Service.ExcelService;
 import gao.internfinder.backend.Service.ICreateCV;
 import gao.internfinder.backend.dto.CVDTO;
+import gao.internfinder.backend.dto.DataCVDTO;
 import gao.internfinder.backend.dto.User;
 import gao.internfinder.backend.repository.CreateCVRepository;
 import org.apache.commons.io.FileUtils;
@@ -47,11 +48,13 @@ public class CV_createdController {
 
     Context context = new Context();
     @RequestMapping(value = "/postdata", method = RequestMethod.POST)
-    public ResponseEntity<Void> inputData(@RequestBody User user) throws IOException {
+    public ResponseEntity<Void> inputData(@RequestBody DataCVDTO data) throws IOException {
+        User user = new User();
+        user = createCV.postdata(data);
+        String avatar = data.get_avatar();
         boolean bl = false;
         StringBuffer fileName = new StringBuffer();
         fileName.append(UUID.randomUUID().toString().replaceAll("-", ""));
-        String avatar = user.getAvatar();
         if (avatar.indexOf("data:image/png;") != -1) {
             avatar = avatar.replace("data:image/png;base64,", "");
             fileName.append(".png");

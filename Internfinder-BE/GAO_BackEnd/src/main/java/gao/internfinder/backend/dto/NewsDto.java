@@ -1,5 +1,7 @@
 package gao.internfinder.backend.dto;
 
+import java.util.Date;
+
 public class NewsDto {
     private int id_account;
 
@@ -45,33 +47,11 @@ public class NewsDto {
 
     private String Type_of_work;
 
-    public NewsDto() {
-    }
+    private Date create_date;
 
-    public NewsDto( int id_account, int id_category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work) {
-        this.id_account = id_account;
-        this.id_category = id_category;
-        this.decriptions = decriptions;
-        this.title = title;
-        this.image = image;
-        this.position = position;
-        this.salary = salary;
-        this.work_loaction = work_loaction;
-        this.degree = degree;
-        this.major = major;
-        this.working_time = working_time;
-        this.benefit = benefit;
-        this.sex = sex;
-        this.name_nd = name_nd;
-        this.address_nd = address_nd;
-        this.email_nd = email_nd;
-        this.profile_language = profile_language;
-        this.profile_requirement = profile_requirement;
-        this.phone = phone;
-        Job_requirements = job_requirements;
-        this.quanlity = quanlity;
-        Type_of_work = type_of_work;
-    }
+    private Boolean status;
+
+    private int id_news;
 
     public int getId_account() {
         return id_account;
@@ -247,5 +227,57 @@ public class NewsDto {
 
     public void setType_of_work(String type_of_work) {
         Type_of_work = type_of_work;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public int getId_news() {
+        return id_news;
+    }
+
+    public void setId_news(int id_news) {
+        this.id_news = id_news;
+    }
+
+    public NewsDto(int id_account, int id_category, String decriptions, String title, String image, String position, String salary, String work_loaction, String degree, String major, String working_time, String benefit, String sex, String name_nd, String address_nd, String email_nd, String profile_language, String profile_requirement, String phone, String job_requirements, int quanlity, String type_of_work, Date create_date, Boolean status, int id_news) {
+        this.id_account = id_account;
+        this.id_category = id_category;
+        this.decriptions = decriptions;
+        this.title = title;
+        this.image = image;
+        this.position = position;
+        this.salary = salary;
+        this.work_loaction = work_loaction;
+        this.degree = degree;
+        this.major = major;
+        this.working_time = working_time;
+        this.benefit = benefit;
+        this.sex = sex;
+        this.name_nd = name_nd;
+        this.address_nd = address_nd;
+        this.email_nd = email_nd;
+        this.profile_language = profile_language;
+        this.profile_requirement = profile_requirement;
+        this.phone = phone;
+        Job_requirements = job_requirements;
+        this.quanlity = quanlity;
+        Type_of_work = type_of_work;
+        this.create_date = create_date;
+        this.status = status;
+        this.id_news = id_news;
     }
 }
