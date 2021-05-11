@@ -21,10 +21,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_account;
 
-//    @OneToMany(mappedBy = "account")
-//    @JsonBackReference(value = "accountRole")
-//    private Set<AccountRole> accountRoleList;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "account_roles",
             joinColumns = @JoinColumn(name = "id_account"),
