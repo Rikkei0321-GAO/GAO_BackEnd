@@ -1,11 +1,14 @@
 package gao.internfinder.backend.controllers;
 
+import gao.internfinder.backend.Entity.Created_cv;
+import gao.internfinder.backend.Entity.Cv_apply;
 import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.Service.ExcelService;
 import gao.internfinder.backend.Service.ICreateCV;
 import gao.internfinder.backend.dto.CVDTO;
 import gao.internfinder.backend.dto.DataCVDTO;
 import gao.internfinder.backend.dto.User;
+import gao.internfinder.backend.repository.CreateCVRepository;
 import org.apache.commons.io.FileUtils;
 
 import org.jxls.common.Context;
@@ -25,6 +28,8 @@ import java.io.InputStream;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Base64;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 
@@ -37,6 +42,9 @@ public class CV_createdController {
     ExcelService excelService;
     @Autowired
     ICreateCV createCV;
+
+    @Autowired
+    CreateCVRepository createCVRepository;
 
     String pdfUrl="G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
 
@@ -85,5 +93,25 @@ public class CV_createdController {
         cvdto.setPath(path);
         createCV.addCV(cvdto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public List<Created_cv> getAll(){
+        return createCVRepository.findAll();
+    }
+
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    private void delete(@PathVariable Integer id){
+        createCVRepository.deleteById(id);
+    }
+    @RequestMapping(value = "file/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Created_cv> get(@PathVariable("id") Integer id) {
+        try {
+            Created_cv st = createCVRepository.findById(id).get();
+            return new ResponseEntity<Created_cv>(st, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Created_cv>(HttpStatus.NOT_FOUND);
+        }
     }
 }
