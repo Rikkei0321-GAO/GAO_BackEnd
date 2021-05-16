@@ -13,8 +13,12 @@ public class DataCVDTO {
     private String _objective;
     private String _avatar;
     private String _address;
+    private String _quoctich;
+    private String _quocgia;
+    private String _honnhan;
 
-    public DataCVDTO(int _id, String _firstName, String _lastName, String _dayOfBirth, String _phone, String _email, String _gender, String _objective, String _avatar, String _address) {
+
+    public DataCVDTO(int _id, String _firstName, String _lastName, String _dayOfBirth, String _phone, String _email, String _gender, String _objective, String _avatar, String _address, String _quoctich, String _quocgia, String _honnhan) {
         this._id = _id;
         this._firstName = _firstName;
         this._lastName = _lastName;
@@ -25,6 +29,9 @@ public class DataCVDTO {
         this._objective = _objective;
         this._avatar = _avatar;
         this._address = _address;
+        this._quoctich = _quoctich;
+        this._quocgia = _quocgia;
+        this._honnhan = _honnhan;
     }
 
     public DataCVDTO() {
@@ -108,5 +115,29 @@ public class DataCVDTO {
 
     public void set_address(String _address) {
         this._address = _address;
+    }
+
+    public String get_quoctich() {
+        return _quoctich;
+    }
+
+    public void set_quoctich(String _quoctich) {
+        this._quoctich = _quoctich;
+    }
+
+    public String get_quocgia() {
+        return _quocgia;
+    }
+
+    public void set_quocgia(String _quocgia) {
+        this._quocgia = _quocgia;
+    }
+
+    public String get_honnhan() {
+        return _honnhan;
+    }
+
+    public void set_honnhan(String _honnhan) {
+        this._honnhan = _honnhan;
     }
 }

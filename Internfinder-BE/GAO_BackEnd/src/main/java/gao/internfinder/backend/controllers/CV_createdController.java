@@ -1,12 +1,13 @@
 package gao.internfinder.backend.controllers;
 
+import gao.internfinder.backend.Entity.Template_cv;
 import gao.internfinder.backend.Service.ExcelService;
 import gao.internfinder.backend.Service.ICreateCV;
+import gao.internfinder.backend.Service.ITeampleCV;
 import gao.internfinder.backend.dto.CVDTO;
 import gao.internfinder.backend.dto.DataCVDTO;
 import gao.internfinder.backend.dto.User;
 import org.apache.commons.io.FileUtils;
-
 import org.jxls.common.Context;
 import org.jxls.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,8 @@ import java.util.UUID;
 @RequestMapping(value = "/cv")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CV_createdController {
-
+    @Autowired
+    ITeampleCV teampleCV;
     @Autowired
     ExcelService excelService;
     @Autowired
@@ -79,10 +81,11 @@ public class CV_createdController {
         cvdto.setTemplate_cv(idTemlate);
         cvdto.setFile_name(filename);
         cvdto.setCreate_date(Date.valueOf(LocalDate.now()));
-        String path = excelService.getExcel("template-hoanganh_demo.xlsx",filename, context,response);
+        Template_cv template_cv = teampleCV.getTemplate(idTemlate).get();
+        String templateUrl = template_cv.getPath();
+        String path = excelService.getExcel(templateUrl,filename, context,response);
         cvdto.setPath(path);
         createCV.addCV(cvdto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

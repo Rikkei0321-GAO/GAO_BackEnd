@@ -27,7 +27,7 @@ public class ExcelServiceImpl implements ExcelService {
         FileInputStream inputStream = null;
         String path =null;
         try {
-            inputStream = new FileInputStream(ResourceUtils.getFile(templatePath + templateFile));
+            inputStream = new FileInputStream(ResourceUtils.getFile(templateFile));
             path = ExcelUtil.exportExcel(fileName,inputStream,params,response);
         } catch (IOException | OfficeException e) {
             logger.error("excel export has error" + e);

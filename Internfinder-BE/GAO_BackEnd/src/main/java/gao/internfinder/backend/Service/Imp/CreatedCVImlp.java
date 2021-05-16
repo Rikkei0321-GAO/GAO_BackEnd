@@ -32,6 +32,9 @@ public class CreatedCVImlp implements ICreateCV {
         user.setGender(data.get_gender());
         user.setObjective(data.get_objective());
         user.setPhone(data.get_phone());
+        user.setHonnhan(data.get_honnhan());
+        user.setQuocgia(data.get_quocgia());
+        user.setQuoctich(data.get_quoctich());
         return user;
     }
 }
