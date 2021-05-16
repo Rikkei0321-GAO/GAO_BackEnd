@@ -24,26 +24,32 @@ public class CreatedCVImlp implements ICreateCV {
     @Override
     public User postdata(DataCVDTO data) {
         User user = new User();
-        if (data.getObjective()!=null){
-            user.setAddress(data.getAddress());
-            user.setDayOfBirth(data.getDayOfBirth());
-            user.setEmail(data.getEmail());
-            user.setFirstName(data.getFirstName());
-            user.setLastName(data.getLastName());
-            user.setGender(data.getGender());
-            user.setObjective(data.getObjective());
-            user.setPhone(data.getDayOfBirth());
+        if (data.get_objective()!=null){
+            user.setAddress(data.get_address());
+            user.setDayOfBirth(data.get_dayOfBirth());
+            user.setEmail(data.get_email());
+            user.setFirstName(data.get_firstName());
+            user.setLastName(data.get_lastName());
+            user.setGender(data.get_gender());
+            user.setObjective(data.get_objective());
+            user.setPhone(data.get_phone());
+            user.setHonnhan(data.get_honnhan());
+            user.setQuocgia(data.get_quocgia());
+            user.setQuoctich(data.get_quoctich());
 
         }
         else {
-            user.setAddress(data.getAddress());
-            user.setDayOfBirth(data.getDayOfBirth());
-            user.setEmail(data.getEmail());
-            user.setFirstName(data.getFirstName());
-            user.setLastName(data.getLastName());
-            user.setGender(data.getGender());
+            user.setAddress(data.get_address());
+            user.setDayOfBirth(data.get_dayOfBirth());
+            user.setEmail(data.get_email());
+            user.setFirstName(data.get_firstName());
+            user.setLastName(data.get_lastName());
+            user.setGender(data.get_gender());
             user.setObjective("");
-            user.setPhone(data.getDayOfBirth());
+            user.setPhone(data.get_phone());
+            user.setHonnhan(data.get_honnhan());
+            user.setQuocgia(data.get_quocgia());
+            user.setQuoctich(data.get_quoctich());
         }
         return user;
     }
