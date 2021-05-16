@@ -23,7 +23,7 @@ public class NewsControllerDat {
     private NewsRepository newsRepo;
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public List<News> getAll(){
-        return newsRepo.findAll();
+        return newsRepo.findAll()   ;
     }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {

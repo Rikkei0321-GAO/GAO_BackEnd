@@ -15,6 +15,7 @@ import gao.internfinder.backend.repository.AccountRepository;
 import gao.internfinder.backend.repository.RoleRepository;
 import gao.internfinder.backend.security.jwt.JwtUtils;
 import gao.internfinder.backend.security.services.UserDetailsImpl;
+import jdk.jshell.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -66,7 +67,8 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtResponse(jwt,
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
-												 userDetails.getEmail(), 
+												 userDetails.getEmail(),
+												 userDetails.isEnabled(),
 												 roles));
 	}
 	// dang ki
@@ -85,8 +87,7 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		Account account = new Account(signUpRequest.getUsername(),signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()));
-
+		Account account = new Account(signUpRequest.getUsername(), signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()));
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
@@ -118,6 +119,7 @@ public class AuthController {
 		}
 
 		account.setRoles(roles);
+		account.setStatus(true);
 		accountRepository.save(account);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

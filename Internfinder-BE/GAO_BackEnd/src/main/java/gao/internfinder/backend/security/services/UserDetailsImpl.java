@@ -20,32 +20,37 @@ public class UserDetailsImpl implements UserDetails {
 	private String username;
 
 	private String email;
-
+	private  Boolean status;
 	@JsonIgnore
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Integer id, String username, String email, String password,
+	public UserDetailsImpl(Integer id, String username, String email, String password, Boolean status,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.status =status;
 		this.authorities = authorities;
 	}
 
 	public static UserDetailsImpl build(Account account) {
-		List<GrantedAuthority> authorities = account.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-				.collect(Collectors.toList());
+		if (account.getStatus() == true) {
+			List<GrantedAuthority> authorities = account.getRoles().stream()
+					.map(role -> new SimpleGrantedAuthority(role.getName().name()))
+					.collect(Collectors.toList());
 
-		return new UserDetailsImpl(
-				account.getId_account(),
-				account.getUsername(),
-				account.getEmail(),
-				account.getPassword(),
-				authorities);
+			return new UserDetailsImpl(
+					account.getId_account(),
+					account.getUsername(),
+					account.getEmail(),
+					account.getPassword(),
+					account.getStatus(),
+					authorities);
+		}
+		return null;
 	}
 
 	@Override
@@ -60,7 +65,6 @@ public class UserDetailsImpl implements UserDetails {
 	public String getEmail() {
 		return email;
 	}
-
 	@Override
 	public String getPassword() {
 		return password;
