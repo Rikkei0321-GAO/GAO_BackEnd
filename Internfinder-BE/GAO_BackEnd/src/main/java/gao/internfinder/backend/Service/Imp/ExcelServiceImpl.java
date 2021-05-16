@@ -13,25 +13,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+
 @Service
 public class ExcelServiceImpl implements ExcelService {
 
 
     private static final Logger logger = LoggerFactory.getLogger(gao.internfinder.backend.Service.Imp.ExcelServiceImpl.class);
 
-    @Value("${jxls.template.path}")
-    private String templatePath;
+    @Value("${cv.res.fileOutput}")
+    private  String pfdOut;
+    @Value("${jxls.edit.target}")
+    private  String xlsxTarget;
 
-      @Override
-    public String  getExcel(String templateFile, String fileName, Context params, HttpServletResponse response) {
-        FileInputStream inputStream = null;
-        String path =null;
-        try {
-            inputStream = new FileInputStream(ResourceUtils.getFile(templatePath + templateFile));
-            path = ExcelUtil.exportExcel(fileName,inputStream,params,response);
-        } catch (IOException | OfficeException e) {
-            logger.error("excel export has error" + e);
-        }
+    @Override
+    public String getExcel(String templateFile, String fileName, Context params, HttpServletResponse response) {
+          FileInputStream inputStream = null;
+          String path =null;
+          try {
+              inputStream = new FileInputStream(ResourceUtils.getFile(templateFile));
+              path = ExcelUtil.exportExcel(fileName,inputStream,params,response);
+          } catch (IOException | OfficeException e) {
+              logger.error("excel export has error" + e);
+          }
           return path;
     }
 

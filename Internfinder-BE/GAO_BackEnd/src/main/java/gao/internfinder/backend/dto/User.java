@@ -11,6 +11,9 @@ public class User {
     private String avatar;
     private String address;
     private String overView;
+    private String quoctich;
+    private String quocgia;
+    private String honnhan;
     private byte[] image;
     private String idtemplate;
     //private List<education> educations;
@@ -18,7 +21,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, byte[] image, String idtemplate) {
+    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, String quoctich, String quocgia, String honnhan, byte[] image, String idtemplate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dayOfBirth = dayOfBirth;
@@ -29,6 +32,9 @@ public class User {
         this.avatar = avatar;
         this.address = address;
         this.overView = overView;
+        this.quoctich = quoctich;
+        this.quocgia = quocgia;
+        this.honnhan = honnhan;
         this.image = image;
         this.idtemplate = idtemplate;
     }
@@ -127,5 +133,29 @@ public class User {
 
     public void setIdtemplate(String idtemplate) {
         this.idtemplate = idtemplate;
+    }
+
+    public String getQuoctich() {
+        return quoctich;
+    }
+
+    public void setQuoctich(String quoctich) {
+        this.quoctich = quoctich;
+    }
+
+    public String getQuocgia() {
+        return quocgia;
+    }
+
+    public void setQuocgia(String quocgia) {
+        this.quocgia = quocgia;
+    }
+
+    public String getHonnhan() {
+        return honnhan;
+    }
+
+    public void setHonnhan(String honnhan) {
+        this.honnhan = honnhan;
     }
 }
