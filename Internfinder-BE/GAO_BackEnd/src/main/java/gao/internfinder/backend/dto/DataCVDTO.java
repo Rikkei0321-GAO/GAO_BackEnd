@@ -3,110 +3,141 @@ package gao.internfinder.backend.dto;
 public class DataCVDTO {
 
 
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String dayOfBirth;
-    private String phone;
-    private String email;
-    private String gender;
-    private String objective;
-    private String avatar;
-    private String address;
+    private int _id;
+    private String _firstName;
+    private String _lastName;
+    private String _dayOfBirth;
+    private String _phone;
+    private String _email;
+    private String _gender;
+    private String _objective;
+    private String _avatar;
+    private String _address;
+    private String _quoctich;
+    private String _quocgia;
+    private String _honnhan;
 
-    public DataCVDTO(int id, String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dayOfBirth = dayOfBirth;
-        this.phone = phone;
-        this.email = email;
-        this.gender = gender;
-        this.objective = objective;
-        this.avatar = avatar;
-        this.address = address;
+
+    public DataCVDTO(int _id, String _firstName, String _lastName, String _dayOfBirth, String _phone, String _email, String _gender, String _objective, String _avatar, String _address, String _quoctich, String _quocgia, String _honnhan) {
+        this._id = _id;
+        this._firstName = _firstName;
+        this._lastName = _lastName;
+        this._dayOfBirth = _dayOfBirth;
+        this._phone = _phone;
+        this._email = _email;
+        this._gender = _gender;
+        this._objective = _objective;
+        this._avatar = _avatar;
+        this._address = _address;
+        this._quoctich = _quoctich;
+        this._quocgia = _quocgia;
+        this._honnhan = _honnhan;
     }
 
     public DataCVDTO() {
     }
 
-    public int getId() {
-        return id;
+    public int get_id() {
+        return _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String get_firstName() {
+        return _firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void set_firstName(String _firstName) {
+        this._firstName = _firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String get_lastName() {
+        return _lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void set_lastName(String _lastName) {
+        this._lastName = _lastName;
     }
 
-    public String getDayOfBirth() {
-        return dayOfBirth;
+    public String get_dayOfBirth() {
+        return _dayOfBirth;
     }
 
-    public void setDayOfBirth(String dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
+    public void set_dayOfBirth(String _dayOfBirth) {
+        this._dayOfBirth = _dayOfBirth;
     }
 
-    public String getPhone() {
-        return phone;
+    public String get_phone() {
+        return _phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void set_phone(String _phone) {
+        this._phone = _phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String get_email() {
+        return _email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void set_email(String _email) {
+        this._email = _email;
     }
 
-    public String getGender() {
-        return gender;
+    public String get_gender() {
+        return _gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void set_gender(String _gender) {
+        this._gender = _gender;
     }
 
-    public String getObjective() {
-        return objective;
+    public String get_objective() {
+        return _objective;
     }
 
-    public void setObjective(String objective) {
-        this.objective = objective;
+    public void set_objective(String _objective) {
+        this._objective = _objective;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String get_avatar() {
+        return _avatar;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void set_avatar(String _avatar) {
+        this._avatar = _avatar;
     }
 
-    public String getAddress() {
-        return address;
+    public String get_address() {
+        return _address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void set_address(String _address) {
+        this._address = _address;
+    }
+
+    public String get_quoctich() {
+        return _quoctich;
+    }
+
+    public void set_quoctich(String _quoctich) {
+        this._quoctich = _quoctich;
+    }
+
+    public String get_quocgia() {
+        return _quocgia;
+    }
+
+    public void set_quocgia(String _quocgia) {
+        this._quocgia = _quocgia;
+    }
+
+    public String get_honnhan() {
+        return _honnhan;
+    }
+
+    public void set_honnhan(String _honnhan) {
+        this._honnhan = _honnhan;
     }
 }
