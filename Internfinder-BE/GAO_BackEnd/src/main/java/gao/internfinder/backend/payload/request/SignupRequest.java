@@ -45,7 +45,11 @@ public class SignupRequest {
     private String email_contact;
     private  Boolean status;
 
-    public SignupRequest(@NotBlank @Size(min = 3, max = 20) String username,Boolean status , @NotBlank @Size(max = 50) @Email String email, Set<String> role, @NotBlank @Size(min = 6, max = 40) String password, @NotBlank @Size(max = 120) String address, @NotBlank @Size(max = 10) String phone, @NotBlank @Size(max = 120) String company_name, @NotBlank @Size(max = 120) String company_address, @NotBlank @Size(max = 10) String tax_code, @NotBlank @Size(max = 120) String website, @NotBlank @Size(max = 50) String name_contact, @NotBlank @Size(max = 120) String email_contact) {
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public SignupRequest(@NotBlank @Size(min = 3, max = 20) String username, @NotBlank @Size(max = 50) @Email String email, Set<String> role, @NotBlank @Size(min = 6, max = 40) String password, @Size(max = 120) String address, @Size(max = 10) String phone, @Size(max = 120) String company_name, @Size(max = 120) String company_address, @Size(max = 10) String tax_code, @Size(max = 120) String website, @Size(max = 50) String name_contact, @Size(max = 120) String email_contact, Boolean status) {
         this.username = username;
         this.email = email;
         this.role = role;
@@ -60,7 +64,6 @@ public class SignupRequest {
         this.email_contact = email_contact;
         this.status = status;
     }
-
 
     public void setStatus(Boolean status) {
         this.status = status;

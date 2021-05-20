@@ -30,12 +30,23 @@ public class AccountControllerDat {
         accountRepo.deleteById(id);
     }
 
+    @PutMapping("/admin/{id}")
+    public  ResponseEntity<?> editadmin(@RequestBody Account account, @PathVariable Integer id){
+        try {
+            Account account1 = accountRepo.findById(id).get();
+            account1.setStatus(account.getStatus());
+            accountRepo.save(account1);
+            return  new ResponseEntity<>(HttpStatus.OK);
+        }
+        catch (NoSuchElementException e){
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @PutMapping("/{id}")
     public ResponseEntity<?>Edit(@RequestBody Account account, @PathVariable Integer id ){
         try{
             Account account1 = accountRepo.findById(id).get();
             account1.setFullName(account.getFullName());
-            account1.setStatus(account.getStatus());
             account1.setAddress(account .getAddress());
             account1.setBirthday(account.getBirthday());
             account1.setCompanyName(account.getCompanyName());

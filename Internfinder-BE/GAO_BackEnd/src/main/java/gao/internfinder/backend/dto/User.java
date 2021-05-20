@@ -1,5 +1,7 @@
 package gao.internfinder.backend.dto;
 
+import java.util.List;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -12,16 +14,20 @@ public class User {
     private String address;
     private String overView;
     private String quoctich;
-    private String quocgia;
-    private String honnhan;
+    private String quocGia;
+    private String honNhan;
     private byte[] image;
     private String idtemplate;
+    private List<String> skills;
+    private List<String> thanhTichs;
+    private String kinhNghiems;
+    private String hocTap;
     //private List<education> educations;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, String quoctich, String quocgia, String honnhan, byte[] image, String idtemplate) {
+    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, String quoctich, String quocGia, String honNhan, byte[] image, String idtemplate, List<String> skills, List<String> thanhTichs, String kinhNghiems, String hocTap) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dayOfBirth = dayOfBirth;
@@ -33,10 +39,14 @@ public class User {
         this.address = address;
         this.overView = overView;
         this.quoctich = quoctich;
-        this.quocgia = quocgia;
-        this.honnhan = honnhan;
+        this.quocGia = quocGia;
+        this.honNhan = honNhan;
         this.image = image;
         this.idtemplate = idtemplate;
+        this.skills = skills;
+        this.thanhTichs = thanhTichs;
+        this.kinhNghiems = kinhNghiems;
+        this.hocTap = hocTap;
     }
 
     public String getFirstName() {
@@ -119,6 +129,30 @@ public class User {
         this.overView = overView;
     }
 
+    public String getQuoctich() {
+        return quoctich;
+    }
+
+    public void setQuoctich(String quoctich) {
+        this.quoctich = quoctich;
+    }
+
+    public String getQuocGia() {
+        return quocGia;
+    }
+
+    public void setQuocGia(String quocGia) {
+        this.quocGia = quocGia;
+    }
+
+    public String getHonNhan() {
+        return honNhan;
+    }
+
+    public void setHonNhan(String honNhan) {
+        this.honNhan = honNhan;
+    }
+
     public byte[] getImage() {
         return image;
     }
@@ -135,27 +169,35 @@ public class User {
         this.idtemplate = idtemplate;
     }
 
-    public String getQuoctich() {
-        return quoctich;
+    public List<String> getSkills() {
+        return skills;
     }
 
-    public void setQuoctich(String quoctich) {
-        this.quoctich = quoctich;
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
     }
 
-    public String getQuocgia() {
-        return quocgia;
+    public List<String> getThanhTichs() {
+        return thanhTichs;
     }
 
-    public void setQuocgia(String quocgia) {
-        this.quocgia = quocgia;
+    public void setThanhTichs(List<String> thanhTichs) {
+        this.thanhTichs = thanhTichs;
     }
 
-    public String getHonnhan() {
-        return honnhan;
+    public String getKinhNghiems() {
+        return kinhNghiems;
     }
 
-    public void setHonnhan(String honnhan) {
-        this.honnhan = honnhan;
+    public void setKinhNghiems(String kinhNghiems) {
+        this.kinhNghiems = kinhNghiems;
+    }
+
+    public String getHocTap() {
+        return hocTap;
+    }
+
+    public void setHocTap(String hocTap) {
+        this.hocTap = hocTap;
     }
 }

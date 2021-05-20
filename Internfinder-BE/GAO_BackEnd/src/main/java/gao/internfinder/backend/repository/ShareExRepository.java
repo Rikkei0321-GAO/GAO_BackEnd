@@ -1,5 +1,6 @@
 package gao.internfinder.backend.repository;
 
+import gao.internfinder.backend.Entity.News;
 import gao.internfinder.backend.Entity.Share_experience;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,8 @@ public interface ShareExRepository extends JpaRepository<Share_experience, Integ
 
     @Query(value = "select * from share_experience cm order by cm.modife_date desc ", nativeQuery = true)
     List<Share_experience> findAll();
+
     @Query(value = "select  * from  share_experience cm where  cm.title like ?1", nativeQuery = true)
     List<Share_experience> findAllByTitle(String title);
+
 }

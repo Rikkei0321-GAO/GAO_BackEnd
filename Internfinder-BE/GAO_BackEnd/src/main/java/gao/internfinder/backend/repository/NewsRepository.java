@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Integer> {
 
-    @Query(value = "select * from news " +
-            "where news.id_account = ?", nativeQuery = true)
-    List<News> findByAccount(int idAccount);
-
-
+//    @Query(value = "select * from news " +
+//            "where news.id_account = ?", nativeQuery = true)
+//    List<News> findByAccount(int idAccount);
+    @Query(value = "select * from  news where  news.id_account =? order by create_date desc ", nativeQuery = true)
+    List<News> findByAccount(int id);
     @Query(value = "select * from News where id = ?", nativeQuery = true)
     News getByIdNews(Integer id);
 
@@ -26,4 +26,6 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
 
     @Query(value = "select * from `news`  where news.status = 1 order by create_date desc ", nativeQuery = true)
     List<News> findAllDay();
+
+
 }
