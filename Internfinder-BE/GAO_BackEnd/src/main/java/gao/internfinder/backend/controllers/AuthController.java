@@ -65,7 +65,7 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(new JwtResponse(jwt,
-												 userDetails.getId(), 
+												 userDetails.getId(),
 												 userDetails.getUsername(), 
 												 userDetails.getEmail(),
 												 userDetails.isEnabled(),
@@ -87,7 +87,15 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		Account account = new Account(signUpRequest.getUsername(), signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()));
+		Account account = new Account(signUpRequest.getUsername(),
+				encoder.encode(signUpRequest.getPassword()),
+				signUpRequest.getEmail(),
+				signUpRequest.getCompany_address(),
+				signUpRequest.getCompany_name(),
+				signUpRequest.getPhone(),
+				signUpRequest.getTax_code(),
+				signUpRequest.getWebsite()
+				);
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
@@ -141,7 +149,10 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		Account account = new Account(signUpRequest.getUsername(),signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()), signUpRequest.getAddress(), signUpRequest.getPhone());
+		Account account = new Account(signUpRequest.getUsername(),
+				signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()),
+				signUpRequest.getAddress(),
+				signUpRequest.getPhone());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
