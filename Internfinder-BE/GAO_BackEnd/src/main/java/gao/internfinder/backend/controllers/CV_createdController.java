@@ -1,6 +1,8 @@
 package gao.internfinder.backend.controllers;
 
+import gao.internfinder.backend.Entity.Account;
 import gao.internfinder.backend.Entity.Created_cv;
+import gao.internfinder.backend.Entity.News;
 import gao.internfinder.backend.Entity.Template_cv;
 import gao.internfinder.backend.Service.ExcelService;
 import gao.internfinder.backend.Service.ICreateCV;
@@ -8,6 +10,7 @@ import gao.internfinder.backend.Service.ITeampleCV;
 import gao.internfinder.backend.dto.CVDTO;
 import gao.internfinder.backend.dto.DataCVDTO;
 import gao.internfinder.backend.dto.User;
+import gao.internfinder.backend.repository.AccountRepository;
 import gao.internfinder.backend.repository.CreateCVRepository;
 import org.apache.commons.io.FileUtils;
 
@@ -38,6 +41,8 @@ import java.util.UUID;
 public class CV_createdController {
     @Autowired
     CreateCVRepository createCVRepository;
+    @Autowired
+    AccountRepository accountRepository;
     @Autowired
     ITeampleCV teampleCV;
     @Autowired
@@ -94,7 +99,6 @@ public class CV_createdController {
         createCV.addCV(cvdto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public List<Created_cv> getAll(){
         return createCVRepository.findAll();
@@ -105,6 +109,7 @@ public class CV_createdController {
     private void delete(@PathVariable Integer id){
             createCVRepository.deleteById(id);
     }
+
     @RequestMapping(value = "file/{id}", method = RequestMethod.GET)
     public ResponseEntity<Created_cv> get(@PathVariable("id") Integer id) {
         try {
@@ -113,5 +118,13 @@ public class CV_createdController {
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Created_cv>(HttpStatus.NOT_FOUND);
         }
+    }
+    @RequestMapping(value = "/index/{idAccount}", method = RequestMethod.GET)
+    public ResponseEntity<List<Created_cv>> getOneAccount(@PathVariable int idAccount){
+        List<Created_cv> list = createCV.findOneAccount(idAccount);
+        if (list.isEmpty()) {
+            return new ResponseEntity<List<Created_cv>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

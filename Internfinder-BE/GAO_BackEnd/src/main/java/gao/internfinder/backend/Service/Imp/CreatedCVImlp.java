@@ -62,4 +62,9 @@ public class CreatedCVImlp implements ICreateCV {
         return user;
     }
 
+    @Override
+    public List<Created_cv> findOneAccount(int idAccount) {
+        return createCVRepository.findByAccount(idAccount);
+    }
+
 }
