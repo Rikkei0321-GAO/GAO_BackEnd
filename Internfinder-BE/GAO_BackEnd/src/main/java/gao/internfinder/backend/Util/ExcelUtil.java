@@ -23,6 +23,7 @@ public class ExcelUtil {
     private static String xlsxTarget= "G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\target\\";
 
 
+
     static LocalOfficeManager officeManager = LocalOfficeManager.builder()
             .install()
             .officeHome("C:\\Program Files (x86)\\OpenOffice 4")
@@ -53,7 +54,6 @@ public class ExcelUtil {
                                 .from(DefaultDocumentFormatRegistry.PDF)
                                 .storeProperty(DocumentFamily.TEXT, "FilterOptions", "EmbedImages")
                                 .build();
-                //JodConverter.convert(osFile).to(os).as(converter).execute();
                 LocalConverter.make().convert(osFile).to(pdf).as(converter).execute();
                 LocalConverter.make().convert(osFile).to(os).as(converter).execute();
                 return urlFileOut;

@@ -18,13 +18,13 @@ public class DataCVDTO {
     private String honNhan;
     private List<String> skills;
     private List<String> thanhTichs;
-    private String kinhNghiems;
-    private String hocTap;
+    private List<KinhNghiem> kinhNghiems;
+    private List<HocTap> hocTaps;
 
     public DataCVDTO() {
     }
 
-    public DataCVDTO(int id, String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String quocTich, String quocGia, String honNhan, List<String> skills, List<String> thanhTichs, String kinhNghiems, String hocTap) {
+    public DataCVDTO(int id, String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String quocTich, String quocGia, String honNhan, List<String> skills, List<String> thanhTichs, List<KinhNghiem> kinhNghiems, List<HocTap> hocTaps) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class DataCVDTO {
         this.skills = skills;
         this.thanhTichs = thanhTichs;
         this.kinhNghiems = kinhNghiems;
-        this.hocTap = hocTap;
+        this.hocTaps = hocTaps;
     }
 
     public int getId() {
@@ -164,19 +164,19 @@ public class DataCVDTO {
         this.thanhTichs = thanhTichs;
     }
 
-    public String getKinhNghiems() {
+    public List<KinhNghiem> getKinhNghiems() {
         return kinhNghiems;
     }
 
-    public void setKinhNghiems(String kinhNghiems) {
+    public void setKinhNghiems(List<KinhNghiem> kinhNghiems) {
         this.kinhNghiems = kinhNghiems;
     }
 
-    public String getHocTap() {
-        return hocTap;
+    public List<HocTap> getHocTaps() {
+        return hocTaps;
     }
 
-    public void setHocTap(String hocTap) {
-        this.hocTap = hocTap;
+    public void setHocTaps(List<HocTap> hocTaps) {
+        this.hocTaps = hocTaps;
     }
 }
