@@ -50,8 +50,8 @@ public class CV_createdController {
     @Autowired
     ICreateCV createCV;
 
-    String pdfUrl="G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
-
+//    String pdfUrl="G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
+    String pdfUrl="C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\New folder\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
     Context context = new Context();
     @RequestMapping(value = "/postdata", method = RequestMethod.POST)
     public ResponseEntity<Void> inputData(@RequestBody DataCVDTO data) throws IOException {
@@ -99,6 +99,8 @@ public class CV_createdController {
         createCV.addCV(cvdto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public List<Created_cv> getAll(){
         return createCVRepository.findAll();
@@ -110,6 +112,7 @@ public class CV_createdController {
             createCVRepository.deleteById(id);
     }
 
+
     @RequestMapping(value = "file/{id}", method = RequestMethod.GET)
     public ResponseEntity<Created_cv> get(@PathVariable("id") Integer id) {
         try {
@@ -119,6 +122,7 @@ public class CV_createdController {
             return new ResponseEntity<Created_cv>(HttpStatus.NOT_FOUND);
         }
     }
+
     @RequestMapping(value = "/index/{idAccount}", method = RequestMethod.GET)
     public ResponseEntity<List<Created_cv>> getOneAccount(@PathVariable int idAccount){
         List<Created_cv> list = createCV.findOneAccount(idAccount);

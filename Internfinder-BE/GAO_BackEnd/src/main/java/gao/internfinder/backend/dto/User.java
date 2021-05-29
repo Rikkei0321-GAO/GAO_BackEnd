@@ -10,7 +10,6 @@ public class User {
     private String email;
     private String gender;
     private String objective;
-    private String avatar;
     private String address;
     private String overView;
     private String quoctich;
@@ -20,14 +19,13 @@ public class User {
     private String idtemplate;
     private List<String> skills;
     private List<String> thanhTichs;
-    private String kinhNghiems;
-    private String hocTap;
-    //private List<education> educations;
+    private List<KinhNghiem> experiences;
+    private List<HocTap> hocTaps;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String avatar, String address, String overView, String quoctich, String quocGia, String honNhan, byte[] image, String idtemplate, List<String> skills, List<String> thanhTichs, String kinhNghiems, String hocTap) {
+    public User(String firstName, String lastName, String dayOfBirth, String phone, String email, String gender, String objective, String address, String overView, String quoctich, String quocGia, String honNhan, byte[] image, String idtemplate, List<String> skills, List<String> thanhTichs, List<KinhNghiem> experiences, List<HocTap> hocTaps) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dayOfBirth = dayOfBirth;
@@ -35,7 +33,6 @@ public class User {
         this.email = email;
         this.gender = gender;
         this.objective = objective;
-        this.avatar = avatar;
         this.address = address;
         this.overView = overView;
         this.quoctich = quoctich;
@@ -45,8 +42,8 @@ public class User {
         this.idtemplate = idtemplate;
         this.skills = skills;
         this.thanhTichs = thanhTichs;
-        this.kinhNghiems = kinhNghiems;
-        this.hocTap = hocTap;
+        this.experiences = experiences;
+        this.hocTaps = hocTaps;
     }
 
     public String getFirstName() {
@@ -103,14 +100,6 @@ public class User {
 
     public void setObjective(String objective) {
         this.objective = objective;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public String getAddress() {
@@ -185,19 +174,19 @@ public class User {
         this.thanhTichs = thanhTichs;
     }
 
-    public String getKinhNghiems() {
-        return kinhNghiems;
+    public List<KinhNghiem> getExperiences() {
+        return experiences;
     }
 
-    public void setKinhNghiems(String kinhNghiems) {
-        this.kinhNghiems = kinhNghiems;
+    public void setExperiences(List<KinhNghiem> experiences) {
+        this.experiences = experiences;
     }
 
-    public String getHocTap() {
-        return hocTap;
+    public List<HocTap> getHocTaps() {
+        return hocTaps;
     }
 
-    public void setHocTap(String hocTap) {
-        this.hocTap = hocTap;
+    public void setHocTaps(List<HocTap> hocTaps) {
+        this.hocTaps = hocTaps;
     }
 }

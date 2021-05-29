@@ -20,11 +20,6 @@ public class ExcelServiceImpl implements ExcelService {
 
     private static final Logger logger = LoggerFactory.getLogger(gao.internfinder.backend.Service.Imp.ExcelServiceImpl.class);
 
-    @Value("${cv.res.fileOutput}")
-    private  String pfdOut;
-    @Value("${jxls.edit.target}")
-    private  String xlsxTarget;
-
     @Override
     public String getExcel(String templateFile, String fileName, Context params, HttpServletResponse response) {
           FileInputStream inputStream = null;

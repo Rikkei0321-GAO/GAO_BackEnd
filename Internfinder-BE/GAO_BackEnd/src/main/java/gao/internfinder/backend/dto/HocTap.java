@@ -1,25 +1,25 @@
 package gao.internfinder.backend.dto;
 
-public class KinhNghiem {
-    private String contact;
+public class HocTap {
+    private String school;
     private String dayStart;
     private String dayEnd;
 
-    public KinhNghiem() {
-    }
-
-    public KinhNghiem(String contact, String dayStart, String dayEnd) {
-        this.contact = contact;
+    public HocTap(String school, String dayStart, String dayEnd) {
+        this.school = school;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
     }
 
-    public String getContact() {
-        return contact;
+    public HocTap() {
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getDayStart() {

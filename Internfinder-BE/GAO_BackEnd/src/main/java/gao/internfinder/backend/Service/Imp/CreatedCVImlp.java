@@ -25,8 +25,6 @@ public class CreatedCVImlp implements ICreateCV {
     @Override
     public User postdata(DataCVDTO data) {
         User user = new User();
-        if (data.getObjective()!=null){
-            List<KinhNghiem> demo = new ArrayList<>();
             user.setAddress(data.getAddress());
             user.setDayOfBirth(data.getDayOfBirth());
             user.setEmail(data.getEmail());
@@ -40,25 +38,8 @@ public class CreatedCVImlp implements ICreateCV {
             user.setQuoctich(data.getQuocTich());
             user.setSkills(data.getSkills());
             user.setThanhTichs(data.getThanhTichs());
-            user.setKinhNghiems(data.getKinhNghiems());
-            user.setHocTap(data.getHocTap());
-        }
-        else {
-            user.setAddress(data.getAddress());
-            user.setDayOfBirth(data.getDayOfBirth());
-            user.setEmail(data.getEmail());
-            user.setFirstName(data.getFirstName());
-            user.setLastName(data.getLastName());
-            user.setGender(data.getGender());
-            user.setObjective("");
-            user.setPhone(data.getPhone());
-            user.setHonNhan(data.getHonNhan());
-            user.setQuocGia(data.getQuocGia());
-            user.setQuoctich(data.getQuocTich());
-            user.setSkills(data.getSkills());
-            user.setThanhTichs(data.getThanhTichs());
-            user.setKinhNghiems(data.getKinhNghiems());
-        }
+            user.setExperiences(data.getKinhNghiems());
+            user.setHocTaps(data.getHocTaps());
         return user;
     }
 
