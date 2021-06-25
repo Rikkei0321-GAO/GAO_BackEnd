@@ -79,22 +79,20 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
-
 		if (accountRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
-
 		// Create new user's account
 		Account account = new Account(signUpRequest.getUsername(),
 				encoder.encode(signUpRequest.getPassword()),
-				signUpRequest.getEmail(),
-				signUpRequest.getCompany_address(),
 				signUpRequest.getCompany_name(),
-				signUpRequest.getPhone(),
+				signUpRequest.getCompany_address(),
 				signUpRequest.getTax_code(),
-				signUpRequest.getWebsite()
+				signUpRequest.getWebsite(),
+				signUpRequest.getPhone(),
+				signUpRequest.getEmail()
 				);
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
@@ -128,7 +126,7 @@ public class AuthController {
 
 		account.setRoles(roles);
 		account.setStatus(true);
-		accountRepository.save(account);
+			accountRepository.save(account);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}

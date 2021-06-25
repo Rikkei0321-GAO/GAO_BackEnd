@@ -127,12 +127,12 @@ public class Account {
     public Account(String username, String password, String email, String companyName, String phone, String company_address, String website, String taxCode) {
         this.username = username;
         this.password = password;
-        this.email = email;
-        this.company_address = company_address;
         this.companyName = companyName;
-        this.phone = phone;
+        this.company_address = company_address;
         this.taxCode = taxCode;
+        this.phone = phone;
         this.website = website;
+        this.email = email;
     }
     public Account(@NotBlank @Size(max = 50) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 120) String address, @NotBlank @Size(max = 10) String phone) {
         this.username = username;

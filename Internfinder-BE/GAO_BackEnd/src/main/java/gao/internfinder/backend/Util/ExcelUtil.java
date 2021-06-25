@@ -23,7 +23,6 @@ public class ExcelUtil {
     private static String xlsxTarget= "G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\target\\";
 
 
-
     static LocalOfficeManager officeManager = LocalOfficeManager.builder()
             .install()
             .officeHome("C:\\Program Files (x86)\\OpenOffice 4")

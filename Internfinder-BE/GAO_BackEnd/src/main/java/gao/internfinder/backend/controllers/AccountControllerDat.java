@@ -42,6 +42,28 @@ public class AccountControllerDat {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/thaydoi/{id}")
+    public ResponseEntity<Account> getA(@PathVariable Integer id) {
+        try {
+            Account st = accountRepo.findById(id).get();
+            return new ResponseEntity<Account>(st, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @PutMapping("/thaydoi/{id}")
+    public ResponseEntity<?>EditImage(@RequestBody Account account, @PathVariable Integer id ){
+        try{
+            Account account1 = accountRepo.findById(id).get();
+            account1.setImage(account.getImage());
+            accountRepo.save(account1);
+            return  new ResponseEntity<>(HttpStatus.OK);
+        }
+        catch (NoSuchElementException e){
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
     @PutMapping("/{id}")
     public ResponseEntity<?>Edit(@RequestBody Account account, @PathVariable Integer id ){
         try{
@@ -56,8 +78,8 @@ public class AccountControllerDat {
             account1.setSex(account.getSex())       ;
             account1.setNameContact(account.getNameContact());
             account1.setLink(account.getLink());
-            account1.setPhone(account.getPhone());
             account1.setImage(account.getImage());
+            account1.setPhone(account.getPhone());
             account1.setWebsite(account.getWebsite());
             account1.setCompany_address(account.getCompany_address());
             account1.setPostion(account.getPostion());
@@ -69,6 +91,7 @@ public class AccountControllerDat {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Account> get(@PathVariable Integer id) {
         try {

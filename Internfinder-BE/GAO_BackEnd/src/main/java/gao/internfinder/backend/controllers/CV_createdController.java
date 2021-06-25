@@ -50,8 +50,8 @@ public class CV_createdController {
     @Autowired
     ICreateCV createCV;
 
-//    String pdfUrl="G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
-    String pdfUrl="C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\New folder\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
+    String pdfUrl="G:\\FullStack_Version05\\BE\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
+//    String pdfUrl="C:\\Users\\hoang\\OneDrive\\Máy tính\\D\\New folder\\GAO_BackEnd\\Internfinder-BE\\GAO_BackEnd\\src\\main\\resources\\trash\\";
     Context context = new Context();
     @RequestMapping(value = "/postdata", method = RequestMethod.POST)
     public ResponseEntity<Void> inputData(@RequestBody DataCVDTO data) throws IOException {
